@@ -6,36 +6,39 @@ public class audioOptions : MonoBehaviour
 {
     [Header("mixers")]
     [SerializeField] AudioMixer MusicMixer;
-    //[SerializeField] AudioMixer SfxMixer;
+    [SerializeField] AudioMixer SfxMixer;
 
     [Header("sliders")]
     [SerializeField] Slider musicSlider;
-    //[SerializeField] Slider SfxSlider;
+    [SerializeField] Slider SfxSlider;
 
-    //public float music;
-    //public float SfxVolume;
+    public float music;
+    public float SfxVolume;
+
+    [Header("AudioSources")]
+    [SerializeField] AudioSource sFXplayer;
 
     public void Start()
     {
         //MUSIC
-        MusicMixer.SetFloat("music", PlayerPrefs.GetFloat("music"));
-        musicSlider.value = PlayerPrefs.GetFloat("music");
+        MusicMixer.SetFloat("MusicVolume", Mathf.Log10(music) * 20);
+        musicSlider.value = music;
 
         //SFX
-        //SfxMixer.SetFloat("SfxVolume", PlayerPrefs.GetFloat("SfxVolume"));
-        //SfxSlider.value = PlayerPrefs.GetFloat("SfxVolume");
+        SfxMixer.SetFloat("SFXVolume", Mathf.Log10(SfxVolume) * 20);
+        SfxSlider.value = SfxVolume;
     }
 
-	public void volumeSlider(float sliderValue)
+
+    public void volumeSlider()
     {
-        MusicMixer.SetFloat("music", sliderValue);
-        PlayerPrefs.SetFloat("music", sliderValue);
-        PlayerPrefs.Save();
+        music = musicSlider.value;
+        MusicMixer.SetFloat("MusicVolume", Mathf.Log10(music) * 20);
     }
-/*	public void SfxVolumeSlider(float SfxSliderValue)
-	{
-		SfxMixer.SetFloat("SfxVolume", SfxSliderValue);
-		PlayerPrefs.SetFloat("SfxVolume", SfxSliderValue);
-		PlayerPrefs.Save();
-	}*/
+    public void SfxVolumeSlider()
+    {
+        SfxVolume = SfxSlider.value;
+        SfxMixer.SetFloat("SFXVolume", Mathf.Log10(SfxVolume) * 20);
+        sFXplayer.Play();
+    }
 }
