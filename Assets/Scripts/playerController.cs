@@ -13,6 +13,13 @@ public class playerController : MonoBehaviour
     private CharacterController cc;
     [SerializeField] Animator anim;
 
+    //dash
+    [SerializeField] float dashTime;
+    [SerializeField] float dashSpeed;
+    [SerializeField] TrailRenderer trail;
+    float dashCoolDown;
+    [SerializeField] float maxDashCoolDown = 1f;
+
 
     public float CCSpeed;
     [SerializeField] Vector3 lastPosition;
@@ -37,8 +44,11 @@ public class playerController : MonoBehaviour
         PlayerMove();
         //PlayerAnimController();
 
+
         CCSpeed = Mathf.Lerp(CCSpeed, (transform.position - lastPosition).magnitude / Time.deltaTime, 0.75f);
         lastPosition = transform.position;
+
+        //dashCoolDown = maxDashCoolDown;
     }
 
     public void PlayerMove()
@@ -55,6 +65,15 @@ public class playerController : MonoBehaviour
 		playerVelocity.y += gravityValue * Time.deltaTime;
         cc.Move(playerVelocity * Time.deltaTime);
         cc.Move(move * Time.deltaTime * moveSpeed);
+
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			if (Time.time > dashCoolDown)
+			{
+                dashCoolDown = Time.time + maxDashCoolDown;
+                StartCoroutine(Dash());
+            }
+		}
     }
 
     private void Aim()
@@ -70,24 +89,36 @@ public class playerController : MonoBehaviour
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
     }
+    IEnumerator Dash()
+    {
+        float startTime = Time.time;
 
-/*    public void PlayerAnimController()
-	{
-		if (CCSpeed < 0.5f)
-		{
-            anim.SetBool("walk", false);
-		}
-		else
-		{
-            anim.SetBool("walk", !false);
+        while (Time.time < startTime + dashTime)
+        {
+            trail.enabled = true;
+            cc.Move(move.normalized * dashSpeed * Time.deltaTime);
+            yield return null;
         }
-		if (grabbingSnow)
-		{
-            anim.SetBool("grabSnow",true);
-		}
-		else
-		{
-            anim.SetBool("grabSnow", !true);
-        }
-    }*/
+        trail.enabled = false;
+    }
+
+    /*    public void PlayerAnimController()
+        {
+            if (CCSpeed < 0.5f)
+            {
+                anim.SetBool("walk", false);
+            }
+            else
+            {
+                anim.SetBool("walk", !false);
+            }
+            if (grabbingSnow)
+            {
+                anim.SetBool("grabSnow",true);
+            }
+            else
+            {
+                anim.SetBool("grabSnow", !true);
+            }
+        }*/
 }

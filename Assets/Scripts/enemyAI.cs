@@ -5,12 +5,8 @@ using UnityEngine.AI;
 
 public class enemyAI : MonoBehaviour
 {
-	public string EnemyName;
-	//enemyName nameFromArray;
-
 	NavMeshAgent agent;
 	public float agentSpeed = 4.5f;
-	public float deathSpeed = 0f;
 	public string currentState = "IDLE";
 	fieldOfView fov;
 
@@ -35,20 +31,15 @@ public class enemyAI : MonoBehaviour
 	private Transform nearestSnowSource;
 	private float nearestDistance = float.MaxValue;
 
-	//death logic/ressurect
+	//death logic
 	HealthSystem health;
-	public bool goingToRessurect = false;
-	public bool deathAnimPlayed = false;
-	[SerializeField] GameObject cross;
-	//public Vector3 shrine;
 
 	//attack
 	float attackTime;
 	public float MaxAttackTime;
-	[SerializeField] GameObject ball;
+	[SerializeField] GameObject projectile;
 	[SerializeField] Transform shootingPoint;
 	[SerializeField] float forcePower = 100f;
-	public Transform BallKillCounter;
 	public bool canShoot = true;
 
 	//animator
@@ -63,15 +54,7 @@ public class enemyAI : MonoBehaviour
 		goToNextPoint();
 		attackTime = MaxAttackTime;
 		fov = GetComponent<fieldOfView>();
-		//nameFromArray = GetComponent<enemyName>();
-/*
-		if (nameFromArray != null)
-		{
-			EnemyName = nameFromArray.names[Random.Range(0, nameFromArray.names.Length)];
-		}*/
-
 		health = GetComponent<HealthSystem>();
-		//shrine = GameObject.FindWithTag("shrine").transform.position;
 	}
 
 	private void Update()
@@ -84,25 +67,30 @@ public class enemyAI : MonoBehaviour
 			rotationTowardsDirection();
 			float distance = Vector3.Distance(transform.position, currentDestination);
 
-			if (ballsInClip>0)
+			if (distance < 2)
 			{
-				if (fov.seeEnemy)
-				{
-					currentState = "Attack";
-				}
+				goToNextPoint();
+			}
 
-				if (distance < 2)
-				{
-					goToNextPoint();
-				}
-			}
-			else
-			{
-				if (!goingToGetOne)
-				{
-					findBall();
-				}
-			}
+			/*			if (ballsInClip>0)
+						{
+							if (fov.seeEnemy)
+							{
+								currentState = "Attack";
+							}
+
+							if (distance < 2)
+							{
+								goToNextPoint();
+							}
+						}
+						else
+						{
+							if (!goingToGetOne)
+							{
+								findBall();
+							}
+						}*/
 		}
 		else if(currentState== "Attack" && canShoot)
 		{
@@ -134,25 +122,24 @@ public class enemyAI : MonoBehaviour
 		}
 		else if(currentState == "death")
 		{
-			canShoot = false;
-			agent.speed = deathSpeed;
+			//canShoot = false;
+			//agent.speed = deathSpeed;
 
-			if (!deathAnimPlayed)
+/*			if (!deathAnimPlayed)
 			{
 				fov.enabled = false;
 				fov.seeEnemy = false;
 				anim.SetTrigger("death");
 				deathAnimPlayed = true;
-			}
+			}*/
 
 			StartCoroutine(goRessurect());
 		}
-		else if (currentState == "ressurection")
+/*		else if (currentState == "ressurection")
 		{
 			if (!goingToRessurect)
 			{
 				goingToRessurect = true;
-				//agent.destination = shrine;
 			}
 			if (health.Health >= 4)
 			{
@@ -160,7 +147,7 @@ public class enemyAI : MonoBehaviour
 				goingToRessurect = false;
 				goToNextPoint();
 			}
-		}
+		}*/
 	}
 
 	public void goToNextPoint()
@@ -232,9 +219,9 @@ public class enemyAI : MonoBehaviour
 		{
 			attackTime = Time.time + MaxAttackTime;
 			anim.SetTrigger("shoot");
-			GameObject projectile = Instantiate(ball, shootingPoint.transform.position, shootingPoint.transform.rotation);
-			projectile.transform.SetParent(BallKillCounter);
-			projectile.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * forcePower);
+			GameObject projectiles = Instantiate(projectile, shootingPoint.transform.position, shootingPoint.transform.rotation);
+			//projectile.transform.SetParent(BallKillCounter);
+			projectiles.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * forcePower);
 			ballsInClip--;
 		}
 	}
@@ -248,6 +235,7 @@ public class enemyAI : MonoBehaviour
 		CCSpeed = Mathf.Lerp(CCSpeed, (transform.position - lastPosition).magnitude / Time.deltaTime, 0.75f);
 		lastPosition = transform.position;
 	}
+
 /*	public void AnimatorController()
 	{
 		if (CCSpeed < 0.5f)
@@ -259,17 +247,13 @@ public class enemyAI : MonoBehaviour
 			anim.SetBool("walk", !false);
 		}
 	}*/
+
 	IEnumerator goRessurect()
 	{
 		yield return new WaitForSeconds(4);
 		agent.speed = agentSpeed;
 		currentState = "ressurection";
-		deathAnimPlayed = false;
+		//deathAnimPlayed = false;
 		yield return new WaitForSeconds(1);
-		//agent.destination = shrine;
-	}
-	public void removeCross()
-	{
-		cross.SetActive(false);
 	}
 }
