@@ -13,8 +13,6 @@ public class enemyAI : MonoBehaviour
 
 	public bool ReachedPoint = false;
 	[SerializeField] POI poi;
-
-	public Vector3 currentDestination;
 	private Vector3 prevPosition;
 
 	//weapon
@@ -37,6 +35,10 @@ public class enemyAI : MonoBehaviour
 	public float CCSpeed;
 	[SerializeField] Vector3 lastPosition;
 
+	//targeting
+	private Vector3 empTransform;
+
+
 	private void Start()
 	{
 		agent = GetComponent<NavMeshAgent>();
@@ -44,8 +46,6 @@ public class enemyAI : MonoBehaviour
 		attackTime = MaxAttackTime;
 		fov = GetComponent<fieldOfView>();
 		health = GetComponent<HealthSystem>();
-		currentDestination = GameObject.FindWithTag("EMP").transform.position;
-		agent.SetDestination(currentDestination);
 	}
 
 	private void Update()
@@ -55,7 +55,7 @@ public class enemyAI : MonoBehaviour
 		if (currentState == "IDLE")
 		{
 			rotationTowardsDirection();
-			float distance = Vector3.Distance(transform.position, currentDestination);
+			float distance = Vector3.Distance(transform.position, empTransform);
 		}
 		else if (currentState == "Attack")
 		{
@@ -72,8 +72,6 @@ public class enemyAI : MonoBehaviour
 		}
 		prevPosition = transform.position;
 	}
-
-
 	void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.red;
@@ -85,10 +83,11 @@ public class enemyAI : MonoBehaviour
 		lastPosition = transform.position;
 	}
 
-
-
-
-
+	public void GoToPoint(Vector3 position)
+	{
+		empTransform = position;
+		agent.SetDestination(position);
+	}
 
 /*	public void AnimatorController()
 	{
