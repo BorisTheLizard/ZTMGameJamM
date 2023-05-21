@@ -9,6 +9,7 @@ TagManager:
   - enemy
   - obstacles
   - projectiles
+  - EMP
   layers:
   - Default
   - TransparentFX

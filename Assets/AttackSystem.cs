@@ -26,7 +26,7 @@ public class AttackSystem : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.Mouse1))
 		{
-			slash.Play();
+			StartCoroutine(meleAttack());
 		}
 	}
 	private void shooting()
@@ -43,6 +43,12 @@ public class AttackSystem : MonoBehaviour
 				obj.SetActive(true);
 			}
 		}
-
+	}
+	IEnumerator meleAttack()
+	{
+		slash.Play();
+		hitCollider.SetActive(true);
+		yield return new WaitForSeconds(0.1f);
+		hitCollider.SetActive(false);
 	}
 }

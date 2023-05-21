@@ -6,20 +6,20 @@ using UnityEngine.Rendering;
 
 public class HealthSystem : MonoBehaviour
 {
+    [Header("Shared VARS")]
     public int MaxHealth;
     public int Health;
+
+    [Header("Player VARS")]
     CinemachineImpulseSource sourse;
-   // [SerializeField] minusHealthVisual minusHealth;
     [SerializeField] Animator anim;
     [SerializeField] playerController cc;
-   // [SerializeField] shooting PlayerShoot;
 
-    [SerializeField] GameObject player;
-    //[SerializeField] LayerMask defaultMask;
-    [SerializeField] bool animationPlayed = false;
-    [SerializeField] GameObject pathAI;
-    enemyAI ai;
-    [SerializeField] GameObject punchText;
+    [Header("Enemy VARS")]
+    public bool isEnemy;
+
+    [Header("EMP VARS")]
+    public bool isEMP;
 
     public bool dead = false;
 
@@ -36,7 +36,7 @@ public class HealthSystem : MonoBehaviour
         }
 		else
 		{
-            ai = GetComponent<enemyAI>();
+
 		}
 
     }
@@ -48,7 +48,6 @@ public class HealthSystem : MonoBehaviour
         if (IsPlayer)
         {
             sourse.GenerateImpulse();
-         //   minusHealth.DestroyLastCounted();
         }
 
         if (Health <= 0)
@@ -58,19 +57,10 @@ public class HealthSystem : MonoBehaviour
                 cc.moveSpeed = 0;
                 anim.SetTrigger("death");
                 dead = true;
-                player.layer = 0;
-          //      PlayerShoot.canShoot = false;
-                punchText.SetActive(true);
-                if (!animationPlayed)
-				{
-                    StartCoroutine(returnSpeed());
-                }
             }
 			else
 			{
                 dead = true;
-                ai.currentState = "death";
-                ai.gameObject.layer = 0;
             }
         }
         
@@ -81,16 +71,7 @@ public class HealthSystem : MonoBehaviour
 
 		if (IsPlayer)
 		{
-   //         minusHealth.PlusHealth();
+
         }
-    }
-    IEnumerator returnSpeed()
-	{
-        animationPlayed = true;
-        pathAI.transform.position = cc.transform.position;
-        yield return new WaitForSeconds(4f);
-        cc.moveSpeed = 5;
-        animationPlayed = false;
-        pathAI.SetActive(true);
     }
 }
