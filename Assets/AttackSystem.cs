@@ -11,6 +11,7 @@ public class AttackSystem : MonoBehaviour
 	GameObjectPool pool;
 	[SerializeField] int bullets;
 	[SerializeField] Transform shootingPoint;
+	[SerializeField] ParticleSystem slash;
 
 	private void Start()
 	{
@@ -25,7 +26,7 @@ public class AttackSystem : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.Mouse1))
 		{
-			//Baton attack
+			slash.Play();
 		}
 	}
 	private void shooting()
