@@ -51,6 +51,13 @@ public class enemyAI : MonoBehaviour
 	private void Update()
 	{
 		speedCounter();
+		if (health.dead)
+		{
+			//explosionEffect
+			this.gameObject.SetActive(false);
+			health.Health = health.MaxHealth;
+			health.dead = false;
+		}
 
 		if (currentState == "IDLE")
 		{

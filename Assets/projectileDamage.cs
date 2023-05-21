@@ -36,7 +36,6 @@ public class projectileDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collision");
         switch (other.gameObject.tag)
         {
             case "obstacles":
