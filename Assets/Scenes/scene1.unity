@@ -3227,6 +3227,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517833050}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1528216440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1528216441}
+  m_Layer: 6
+  m_Name: shootingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1528216441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528216440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.456, z: 1.194}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1541852074}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1534809197
 GameObject:
   m_ObjectHideFlags: 0
@@ -3322,6 +3352,7 @@ GameObject:
   - component: {fileID: 1541852073}
   - component: {fileID: 1541852072}
   - component: {fileID: 1541852071}
+  - component: {fileID: 1541852075}
   m_Layer: 6
   m_Name: Palyer
   m_TagString: player
@@ -3394,9 +3425,27 @@ Transform:
   m_Children:
   - {fileID: 1534809198}
   - {fileID: 1334485201}
+  - {fileID: 1528216441}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1541852075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541852070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c96b74f8e322d49b934ea526a379d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  maxShootingSpeed: 0.5
+  hitCollider: {fileID: 0}
+  bullets: 0
+  shootingPoint: {fileID: 1528216441}
 --- !u!1 &1556557086
 GameObject:
   m_ObjectHideFlags: 0
@@ -3442,6 +3491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToPool:
   - {fileID: 1863973925358925746, guid: 84f1ac7b3066d654690fb925c145ccfe, type: 3}
+  - {fileID: 7874640730532946678, guid: 30eb24aa3702e8c4d8434703b93cc296, type: 3}
   poolSize: 30
 --- !u!1 &1664447644
 GameObject:
@@ -4072,7 +4122,6 @@ GameObject:
   - component: {fileID: 1827955778}
   - component: {fileID: 1827955781}
   - component: {fileID: 1827955780}
-  - component: {fileID: 1827955779}
   m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
@@ -4094,19 +4143,6 @@ Transform:
   m_Father: {fileID: 1534809198}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1827955779
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827955777}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1827955780
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4218,7 +4254,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7796053, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
