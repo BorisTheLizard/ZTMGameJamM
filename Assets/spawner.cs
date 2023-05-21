@@ -13,7 +13,9 @@ public class spawner : MonoBehaviour
 
     //spawner logic
     public string currentWave = "1st";
-    public float timeToSpawn = 3f;
+    public float timeToSpawn = 2f;
+    public float timeToSpawn1 = 1.5f;
+    public float timeToSpawn2 = 0.7f;
     public bool spawnerAtDuty = false;
     AImanager enemyList;
 
@@ -40,10 +42,37 @@ public class spawner : MonoBehaviour
 
 		if (currentWave == "1st")
 		{
-			if (!spawnerAtDuty)
-			{
-                StartCoroutine(getEnemyOnTime());
-			}
+            if (!spawnerAtDuty)
+            {
+                StartCoroutine(getEnemyOnTime(timeToSpawn));
+            }
+            if (remainingTime <= 120)
+            {
+                currentWave = "2nd";
+                StopAllCoroutines();
+                spawnerAtDuty = false;
+            }
+        }
+        else if (currentWave == "2nd")
+        {
+            Debug.Log("call 2nd");
+            if (!spawnerAtDuty)
+            {
+                StartCoroutine(getEnemyOnTime(timeToSpawn1));
+            }
+            if (remainingTime <= 60)
+            {
+                currentWave = "3rd";
+                StopAllCoroutines();
+                spawnerAtDuty = false;
+            }
+        }
+        else if (currentWave == "3rd")
+        {
+            if (!spawnerAtDuty)
+            {
+                StartCoroutine(getEnemyOnTime(timeToSpawn2));
+            }
         }
 
 
@@ -87,10 +116,10 @@ public class spawner : MonoBehaviour
             }
         }
     }
-    IEnumerator getEnemyOnTime()
+    IEnumerator getEnemyOnTime(float spawnTime)
 	{
         spawnerAtDuty = true;
-        yield return new WaitForSeconds(timeToSpawn);
+        yield return new WaitForSeconds(spawnTime);
         enemyList.MakeAgentsCircleTarget();
         spawnEnemy();
         spawnerAtDuty = false;
