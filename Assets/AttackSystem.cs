@@ -17,11 +17,15 @@ public class AttackSystem : MonoBehaviour
 	[SerializeField] AudioClip click;
 	[SerializeField] AudioClip Shoot;
 	[SerializeField] AudioClip meleAttackClip;
+	[SerializeField] string[] batonAttacks;
+	private bool batonAttacking = false;
+	[SerializeField] ParticleSystem muzzleFlash;
 
 	private void Start()
 	{
 		pool = FindObjectOfType<GameObjectPool>();
 		audioSource = GetComponent<AudioSource>();
+		batonAttacks = new string[] { "baton", "baton1", "baton2" };
 	}
 
 	private void Update()
@@ -32,6 +36,7 @@ public class AttackSystem : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.Mouse1))
 		{
+			if(!batonAttacking)
 			StartCoroutine(meleAttack());
 		}
 	}
@@ -41,6 +46,7 @@ public class AttackSystem : MonoBehaviour
 		{
 			if (bulletsInClip > 0)
 			{
+				muzzleFlash.Play();
 				shootingSpeed = Time.time + maxShootingSpeed;
 				audioSource.PlayOneShot(Shoot);
 				GameObject obj = pool.GetObject(objectIndex);
@@ -61,10 +67,18 @@ public class AttackSystem : MonoBehaviour
 	}
 	IEnumerator meleAttack()
 	{
+		if (!batonAttacking)
+		{
+			string playAnim = batonAttacks[Random.Range(0, batonAttacks.Length)];
+			anim.SetTrigger(playAnim);
+			Debug.Log(playAnim);
+			batonAttacking = true;
+		}
 		slash.Play();
 		audioSource.PlayOneShot(meleAttackClip);
 		hitCollider.SetActive(true);
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(0.2f);
 		hitCollider.SetActive(false);
+		batonAttacking = false;
 	}
 }
