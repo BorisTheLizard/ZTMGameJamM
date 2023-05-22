@@ -1,22 +1,21 @@
 using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
 
 [DefaultExecutionOrder(0)]
 public class AImanager : MonoBehaviour
 {
-    private static AImanager _instance;
+    /*private static AImanager _instance;
     public static AImanager Instance
     {
         get
-        {
+        cha
             return _instance;
-        }
-        private set
+    }
+    private set
         {
             _instance = value;
         }
-    }
+    }*/
 
     public Transform enemyCount;
     public Transform Target;
@@ -36,18 +35,18 @@ public class AImanager : MonoBehaviour
             }
         }
     }
-/*	private IEnumerator Start()
-	{
-        yield return new WaitForSeconds(0.1f);
-        MakeAgentsCircleTarget();
-    }*/
+    /*	private IEnumerator Start()
+        {
+            yield return new WaitForSeconds(0.1f);
+            MakeAgentsCircleTarget();
+        }*/
 
-	public void MakeAgentsCircleTarget()
+    public void MakeAgentsCircleTarget()
     {
         for (int i = 0; i < Units.Count; i++)
         {
-			if (Units[i].gameObject.activeSelf != false)
-			{
+            if (Units[i].gameObject.activeSelf != false)
+            {
                 Units[i].GoToPoint(new Vector3(
                 Target.position.x + RadiusAroundTarget * Mathf.Cos(2 * Mathf.PI * i / Units.Count),
                 Target.position.y,

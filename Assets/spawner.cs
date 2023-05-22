@@ -1,13 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class spawner : MonoBehaviour
 {
-	[SerializeField] Transform[] spawnPoin;
+    [SerializeField] Transform[] spawnPoin;
     public float duration = 180.0f;
     public Text timerText;
     private float elapsedTime = 0.0f;
@@ -22,6 +20,8 @@ public class spawner : MonoBehaviour
 
     //startNextLvl
     [SerializeField] float startNextLvlTime = 3f;
+
+    public int activeEnemies;
 
     private void Awake()
     {
@@ -44,8 +44,8 @@ public class spawner : MonoBehaviour
         string timerString = string.Format("{0:0}:{1:00}", minutes, seconds);
         timerText.text = timerString;
 
-		if (currentWave == "1st")
-		{
+        if (currentWave == "1st")
+        {
             if (!spawnerAtDuty)
             {
                 StartCoroutine(getEnemyOnTime(timeToSpawn));
@@ -85,7 +85,7 @@ public class spawner : MonoBehaviour
         }
     }
     private void spawnEnemy()
-	{
+    {
         if (spawnPoin.Length > 0 && enemyList.Units.Count > 0)
         {
             int enemyCount = enemyList.Units.Count;
@@ -117,10 +117,18 @@ public class spawner : MonoBehaviour
                 // Increment the number of enemies spawned
                 enemyList.enemiesSpawned++;
             }
+            activeEnemies = 0;
+            for (int i = 0; i < enemyList.Units.Count; i++)
+            {
+                if (enemyList.Units[i].gameObject.activeSelf == true)
+                {
+                    activeEnemies++;
+                }
+            }
         }
     }
     IEnumerator getEnemyOnTime(float spawnTime)
-	{
+    {
         spawnerAtDuty = true;
         yield return new WaitForSeconds(spawnTime);
         enemyList.MakeAgentsCircleTarget();
