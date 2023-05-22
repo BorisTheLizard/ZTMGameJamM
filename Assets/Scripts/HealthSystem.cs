@@ -3,42 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour
 {
     [Header("Shared VARS")]
     public int MaxHealth;
     public int Health;
+    public bool dead = false;
 
     [Header("Player VARS")]
     CinemachineImpulseSource sourse;
     [SerializeField] Animator anim;
     [SerializeField] playerController cc;
+    public bool IsPlayer;
 
     [Header("Enemy VARS")]
     public bool isEnemy;
 
+
     [Header("EMP VARS")]
     public bool isEMP;
+    [SerializeField] Image empHealthBar;
+    [SerializeField] float timeToReloadLvl = 3f;
 
-    public bool dead = false;
-
-    public bool IsPlayer;
 
     private void Start()
     {
-
         Health = MaxHealth;
 
         if (IsPlayer)
         {
             sourse = GetComponent<CinemachineImpulseSource>();
         }
-		else
-		{
-
-		}
-
     }
 
     public void TakeDamage(int damage)
@@ -73,5 +71,26 @@ public class HealthSystem : MonoBehaviour
 		{
 
         }
+    }
+
+	private void Update()
+	{
+		if (isEMP)
+		{
+            float currentHealth = Health;
+            float maxHealth = MaxHealth;
+            empHealthBar.fillAmount = currentHealth / maxHealth;
+
+			if (dead == true)
+			{
+                StartCoroutine(ReloadLevel());
+			}
+        }
+	}
+    IEnumerator ReloadLevel()
+    {
+        yield return new WaitForSeconds(timeToReloadLvl);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }

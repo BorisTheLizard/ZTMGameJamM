@@ -15,20 +15,18 @@ public class enemyAI : MonoBehaviour
 	[SerializeField] POI poi;
 	private Vector3 prevPosition;
 
-	//weapon
-	[SerializeField] int maxBallsInclip = 5;
-	[SerializeField] int ballsInClip = 0;
-
 	//death logic
 	HealthSystem health;
 
 	//attack
+	public bool isMele = false;
 	float attackTime;
 	public float MaxAttackTime;
 	[SerializeField] GameObject projectile;
 	[SerializeField] Transform shootingPoint;
 	[SerializeField] float forcePower = 100f;
 	public bool canShoot = true;
+	[SerializeField] GameObject hitCollider;
 
 	//animator
 	[SerializeField] Animator anim;
@@ -37,15 +35,25 @@ public class enemyAI : MonoBehaviour
 
 	//targeting
 	private Vector3 empTransform;
+	private Transform empTolookAT;
+	public float distanceDebug;
 
 
 	private void Start()
 	{
 		agent = GetComponent<NavMeshAgent>();
 		prevPosition = transform.position;
-		attackTime = MaxAttackTime;
 		fov = GetComponent<fieldOfView>();
 		health = GetComponent<HealthSystem>();
+		empTolookAT = GameObject.FindGameObjectWithTag("EMP").transform;
+	}
+	private void OnDisable()
+	{
+		currentState = "IDLE";
+	}
+	private void OnEnable()
+	{
+		currentState = "IDLE";
 	}
 
 	private void Update()
@@ -62,14 +70,40 @@ public class enemyAI : MonoBehaviour
 		if (currentState == "IDLE")
 		{
 			rotationTowardsDirection();
-			float distance = Vector3.Distance(transform.position, empTransform);
+			float distance = Vector3.Distance(agent.transform.position, empTransform);
+			distanceDebug = distance;
+
+			if (distance < 3)
+			{
+				currentState = "AttackEMP";
+			}
 		}
 		else if (currentState == "Attack")
 		{
 
 		}
+		else if (currentState == "AttackEMP")
+		{
+			transform.LookAt(empTolookAT);
+			attack();
+		}
 	}
-
+	void attack()
+	{
+		if (Time.time > attackTime)
+		{
+			attackTime = Time.time + MaxAttackTime;
+			if (isMele)
+			{
+				//PlayAnim to On collider
+				hitCollider.SetActive(true);
+			}
+			else
+			{
+				//shooting anim and methode
+			}
+		}
+	}
 	void rotationTowardsDirection()
 	{
 		Vector3 deltaPosition = transform.position - prevPosition;
@@ -89,7 +123,6 @@ public class enemyAI : MonoBehaviour
 		CCSpeed = Mathf.Lerp(CCSpeed, (transform.position - lastPosition).magnitude / Time.deltaTime, 0.75f);
 		lastPosition = transform.position;
 	}
-
 	public void GoToPoint(Vector3 position)
 	{
 		empTransform = position;

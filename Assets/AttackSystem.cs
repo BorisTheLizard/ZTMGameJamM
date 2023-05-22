@@ -12,10 +12,13 @@ public class AttackSystem : MonoBehaviour
 	[SerializeField] int bullets;
 	[SerializeField] Transform shootingPoint;
 	[SerializeField] ParticleSystem slash;
+	AudioSource audioSource;
+	[SerializeField] AudioClip meleAttackClip;
 
 	private void Start()
 	{
 		pool = FindObjectOfType<GameObjectPool>();
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	private void Update()
@@ -47,6 +50,7 @@ public class AttackSystem : MonoBehaviour
 	IEnumerator meleAttack()
 	{
 		slash.Play();
+		audioSource.PlayOneShot(meleAttackClip);
 		hitCollider.SetActive(true);
 		yield return new WaitForSeconds(0.1f);
 		hitCollider.SetActive(false);

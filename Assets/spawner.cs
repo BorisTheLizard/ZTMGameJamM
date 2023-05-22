@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class spawner : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class spawner : MonoBehaviour
     public float timeToSpawn2 = 0.7f;
     public bool spawnerAtDuty = false;
     AImanager enemyList;
+
+    //startNextLvl
+    [SerializeField] float startNextLvlTime = 3f;
 
     private void Awake()
     {
@@ -55,7 +59,6 @@ public class spawner : MonoBehaviour
         }
         else if (currentWave == "2nd")
         {
-            Debug.Log("call 2nd");
             if (!spawnerAtDuty)
             {
                 StartCoroutine(getEnemyOnTime(timeToSpawn1));
@@ -123,5 +126,12 @@ public class spawner : MonoBehaviour
         enemyList.MakeAgentsCircleTarget();
         spawnEnemy();
         spawnerAtDuty = false;
+    }
+    IEnumerator LoadNextLevel()
+    {
+        yield return new WaitForSeconds(startNextLvlTime);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+        SceneManager.LoadScene(nextSceneIndex);
     }
 }
