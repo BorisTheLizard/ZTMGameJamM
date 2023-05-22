@@ -71,7 +71,6 @@ public class AttackSystem : MonoBehaviour
 		{
 			string playAnim = batonAttacks[Random.Range(0, batonAttacks.Length)];
 			anim.SetTrigger(playAnim);
-			Debug.Log(playAnim);
 			batonAttacking = true;
 		}
 		slash.Play();
