@@ -18,6 +18,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] playerController cc;
     public bool IsPlayer;
+    [SerializeField] Image PlayerHealthBar;
 
     [Header("Enemy VARS")]
     public bool isEnemy;
@@ -69,7 +70,10 @@ public class HealthSystem : MonoBehaviour
 
 		if (IsPlayer)
 		{
-
+            if (Health > MaxHealth)
+			{
+                Health = MaxHealth;
+			}
         }
     }
 
@@ -85,6 +89,17 @@ public class HealthSystem : MonoBehaviour
 			{
                 StartCoroutine(ReloadLevel());
 			}
+        }
+		if (IsPlayer)
+		{
+            float currentHealth = Health;
+            float maxHealth = MaxHealth;
+            PlayerHealthBar.fillAmount = currentHealth / maxHealth;
+
+            if (dead == true)
+            {
+                StartCoroutine(ReloadLevel());
+            }
         }
 	}
     IEnumerator ReloadLevel()

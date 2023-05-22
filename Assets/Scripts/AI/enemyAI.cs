@@ -11,8 +11,6 @@ public class enemyAI : MonoBehaviour
 	fieldOfView fov;
 	public float SearchRadius = 20f;
 
-	public bool ReachedPoint = false;
-	[SerializeField] POI poi;
 	private Vector3 prevPosition;
 
 	//death logic
@@ -38,6 +36,11 @@ public class enemyAI : MonoBehaviour
 	private Transform empTolookAT;
 	public float distanceDebug;
 
+	//drop on death
+	GameObjectPool pool;
+	public int dropObject = 2;
+	public bool haveLoot = false;
+
 
 	private void Start()
 	{
@@ -46,6 +49,7 @@ public class enemyAI : MonoBehaviour
 		fov = GetComponent<fieldOfView>();
 		health = GetComponent<HealthSystem>();
 		empTolookAT = GameObject.FindGameObjectWithTag("EMP").transform;
+		pool = FindObjectOfType<GameObjectPool>();
 	}
 	private void OnDisable()
 	{
@@ -65,6 +69,17 @@ public class enemyAI : MonoBehaviour
 			this.gameObject.SetActive(false);
 			health.Health = health.MaxHealth;
 			health.dead = false;
+			
+			if (haveLoot)
+			{
+				GameObject obj = pool.GetObject(dropObject);
+				if (obj != null)
+				{
+					obj.transform.position = transform.position;
+					obj.transform.rotation = transform.rotation;
+					obj.SetActive(true);
+				}
+			}
 		}
 
 		if (currentState == "IDLE")

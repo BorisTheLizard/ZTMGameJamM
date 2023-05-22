@@ -9,10 +9,13 @@ public class AttackSystem : MonoBehaviour
 	[SerializeField] float maxShootingSpeed = 0.5f;
 	[SerializeField] GameObject hitCollider;
 	GameObjectPool pool;
-	[SerializeField] int bullets;
+	[SerializeField] int objectIndex;
+	public int bulletsInClip = 5;
 	[SerializeField] Transform shootingPoint;
 	[SerializeField] ParticleSystem slash;
 	AudioSource audioSource;
+	[SerializeField] AudioClip click;
+	[SerializeField] AudioClip Shoot;
 	[SerializeField] AudioClip meleAttackClip;
 
 	private void Start()
@@ -36,14 +39,23 @@ public class AttackSystem : MonoBehaviour
 	{
 		if (Time.time > shootingSpeed)
 		{
-			shootingSpeed = Time.time + maxShootingSpeed;
-			GameObject obj = pool.GetObject(bullets);
-			if (obj != null)
+			if (bulletsInClip > 0)
 			{
-				obj.SetActive(false);
-				obj.transform.position = shootingPoint.position;
-				obj.transform.rotation = shootingPoint.rotation;
-				obj.SetActive(true);
+				shootingSpeed = Time.time + maxShootingSpeed;
+				audioSource.PlayOneShot(Shoot);
+				GameObject obj = pool.GetObject(objectIndex);
+				if (obj != null)
+				{
+					obj.SetActive(false);
+					obj.transform.position = shootingPoint.position;
+					obj.transform.rotation = shootingPoint.rotation;
+					obj.SetActive(true);
+				}
+				bulletsInClip--;
+			}
+			else
+			{
+				audioSource.PlayOneShot(click);
 			}
 		}
 	}
