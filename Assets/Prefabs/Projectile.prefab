@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallHitImpactIndex: 1
-  HitImpactIndex: 1
+  HitImpactIndex: 4
   damageAmount: 3
   timeToWait: 2
   bulletSpeed: 55

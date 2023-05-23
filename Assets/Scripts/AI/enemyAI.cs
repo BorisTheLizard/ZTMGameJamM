@@ -37,6 +37,7 @@ public class enemyAI : MonoBehaviour
 	public float distanceDebug;
 
 	//drop on death
+	[SerializeField] int deathEffectIndex = 5;
 	GameObjectPool pool;
 	public int dropObject = 2;
 	public bool haveLoot = false;
@@ -79,6 +80,13 @@ public class enemyAI : MonoBehaviour
 					obj.transform.rotation = transform.rotation;
 					obj.SetActive(true);
 				}
+			}
+			GameObject deathEffect = pool.GetObject(deathEffectIndex);
+			if (deathEffect != null)
+			{
+				deathEffect.transform.position = transform.position;
+				deathEffect.transform.rotation = transform.rotation;
+				deathEffect.SetActive(true);
 			}
 		}
 

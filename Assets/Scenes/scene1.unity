@@ -3420,7 +3420,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 1
-  HitImpactIndex: 1
+  HitImpactIndex: 4
+  WallHitImpactIndex: 1
 --- !u!54 &859924594
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6332,6 +6333,8 @@ MonoBehaviour:
   - {fileID: 7874640730532946678, guid: 30eb24aa3702e8c4d8434703b93cc296, type: 3}
   - {fileID: 6868298277423866572, guid: d18234a95ea552f45b46b6687155ec78, type: 3}
   - {fileID: 2730568336460810222, guid: b0d743a8dfce2d84eabf1c7f47e7d9aa, type: 3}
+  - {fileID: 4412804039359847503, guid: 85001d1fb4dc1ba438e3cff906b9e2a0, type: 3}
+  - {fileID: 7318395718769248902, guid: 2b85266e0591fe1429663f9e4dd1cf76, type: 3}
   poolSize: 30
 --- !u!1 &1576831945
 GameObject:
@@ -7603,7 +7606,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.778157, y: 1}
+    m_SensorSize: {x: 1.7790369, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
