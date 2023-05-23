@@ -2520,9 +2520,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layers:
-  - {fileID: 1447894572}
   - {fileID: 1648374512}
+  - {fileID: 1447894572}
   - {fileID: 2146294484}
+  addLayer2: 7
+  addLayer3: 13
+  fadeRate: 0.33
 --- !u!1 &769342102
 GameObject:
   m_ObjectHideFlags: 0
@@ -5503,7 +5506,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1627348728942144136, guid: 3d27a03542e2cc14c9d7bc7422e2f0bd, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 16761a885dea55e448e1f59a2f550643, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 383a9d200cb654841b5f8c3a15db4cb1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -6481,7 +6484,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1627348728942144136, guid: 3d27a03542e2cc14c9d7bc7422e2f0bd, type: 2}
-  m_audioClip: {fileID: 8300000, guid: e728139aa02c5d944be3aba7cb814cd1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8d978fb2cd92571429e0203433201a98, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -7970,7 +7973,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1295938, y: 1}
+    m_SensorSize: {x: 2.1213872, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8647,7 +8650,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1627348728942144136, guid: 3d27a03542e2cc14c9d7bc7422e2f0bd, type: 2}
-  m_audioClip: {fileID: 8300000, guid: b4bfaef88fefa9d46901cafa3223e002, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 628e2f71d266f2446bd2c3c96814f78b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
