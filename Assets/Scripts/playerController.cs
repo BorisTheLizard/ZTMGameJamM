@@ -42,7 +42,7 @@ public class playerController : MonoBehaviour
     {
         Aim();
         PlayerMove();
-        //PlayerAnimController();
+        PlayerAnimController();
 
 
         CCSpeed = Mathf.Lerp(CCSpeed, (transform.position - lastPosition).magnitude / Time.deltaTime, 0.75f);
@@ -102,23 +102,23 @@ public class playerController : MonoBehaviour
         trail.enabled = false;
     }
 
-    /*    public void PlayerAnimController()
-        {
-            if (CCSpeed < 0.5f)
-            {
-                anim.SetBool("walk", false);
-            }
-            else
-            {
-                anim.SetBool("walk", !false);
-            }
-            if (grabbingSnow)
-            {
-                anim.SetBool("grabSnow",true);
-            }
-            else
-            {
-                anim.SetBool("grabSnow", !true);
-            }
-        }*/
+	public void PlayerAnimController()
+	{
+		if (CCSpeed < 0.5f)
+		{
+			anim.SetBool("walk", false);
+		}
+		else
+		{
+			anim.SetBool("walk", !false);
+		}
+		if (grabbingSnow)
+		{
+			anim.SetBool("grabSnow", true);
+		}
+		else
+		{
+			anim.SetBool("grabSnow", !true);
+		}
+	}
 }

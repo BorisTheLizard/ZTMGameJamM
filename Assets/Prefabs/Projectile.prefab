@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallHitImpactIndex: 1
-  HitImpactIndex: 1
+  HitImpactIndex: 4
   damageAmount: 3
   timeToWait: 2
   bulletSpeed: 55
@@ -154,7 +154,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.15853691
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -162,13 +162,22 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: -0.20408157
-        outSlope: -0.20408157
+        time: 0.04986447
+        value: 0.06963375
+        inSlope: -0.044945292
+        outSlope: -0.044945292
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.23902446
+        inWeight: 0.33333334
+        outWeight: 0.2924986
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -0.102857135
+        outSlope: -0.102857135
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.29235595
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2

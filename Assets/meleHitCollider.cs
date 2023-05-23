@@ -7,6 +7,7 @@ public class meleHitCollider : MonoBehaviour
 {
 	[SerializeField] int damageAmount;
 	[SerializeField] int HitImpactIndex;
+	[SerializeField] int WallHitImpactIndex;
 	GameObjectPool pool;
 	CinemachineImpulseSource source;
 
@@ -33,7 +34,7 @@ public class meleHitCollider : MonoBehaviour
 		}
 		if (other.tag == "obstacles")
 		{
-			GameObject hitImpact = pool.GetObject(HitImpactIndex);
+			GameObject hitImpact = pool.GetObject(WallHitImpactIndex);
 			source.GenerateImpulse();
 			if (hitImpact != null)
 			{

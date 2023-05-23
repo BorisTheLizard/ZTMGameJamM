@@ -20,7 +20,6 @@ public class robotHitColliderLogic : MonoBehaviour
 	}
 	IEnumerator waitToOff()
 	{
-		Debug.Log("called off");
 		yield return new WaitForSeconds(timeToOff);
 		this.gameObject.SetActive(false);
 	}
