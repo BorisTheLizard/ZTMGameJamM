@@ -2,36 +2,56 @@ using UnityEngine;
 
 public class CombatMusic : MonoBehaviour
 {
-    private spawner spawner;
     [SerializeField] AudioSource[] layers;
+    [SerializeField] int addLayer2;
+    [SerializeField] int addLayer3;
+    [Range(0, 1)]
+    [SerializeField] float fadeRate;
+
+    private spawner spawner;
+    bool[] layerStatus;
 
     void Start()
     {
         spawner = FindObjectOfType<spawner>().GetComponent<spawner>();
         foreach (AudioSource layer in layers)
         {
-            layer.mute = true;
+            layer.volume = 0;
         }
-        layers[0].mute = false;
+        layers[0].volume = 1;
+
+        int layersSize = layers.Length;
+        layerStatus = new bool[layersSize];
+        layerStatus[0] = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (spawner.activeEnemies > 10)
+        if (spawner.activeEnemies > addLayer3)
         {
-            layers[2].mute = false;
-            layers[1].mute = false;
+
+            //layers[2].mute = false;
+            //layers[1].mute = false;
+            if (layers[2].volume < 1)
+            { layers[2].volume += Time.deltaTime * fadeRate; }
+            if (layers[1].volume < 1)
+                layers[1].volume += Time.deltaTime * fadeRate;
+
         }
-        else if (spawner.activeEnemies > 5)
+        else if (spawner.activeEnemies > addLayer2)
         {
-            layers[2].mute = true;
-            layers[1].mute = false;
+            if (layers[2].volume > 0)
+            { layers[2].volume -= Time.deltaTime * fadeRate; }
+            if (layers[1].volume < 1)
+                layers[1].volume += Time.deltaTime * fadeRate;
         }
         else
         {
-            layers[2].mute = true;
-            layers[1].mute = true;
+            if (layers[2].volume > 0)
+            { layers[2].volume -= Time.deltaTime * fadeRate; }
+            if (layers[1].volume > 0)
+            { layers[1].volume -= Time.deltaTime * fadeRate; }
         }
     }
 }
