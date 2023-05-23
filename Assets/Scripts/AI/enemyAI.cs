@@ -110,7 +110,7 @@ public class enemyAI : MonoBehaviour
 			attackTime = Time.time + MaxAttackTime;
 			if (isMele)
 			{
-				//PlayAnim to On collider
+				anim.SetTrigger("attack");
 				hitCollider.SetActive(true);
 			}
 			else
