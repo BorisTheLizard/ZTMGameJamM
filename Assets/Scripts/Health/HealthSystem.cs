@@ -19,6 +19,9 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] playerController cc;
     public bool IsPlayer;
     [SerializeField] Image PlayerHealthBar;
+    public bool PlayerIsDeadTextCalled = false;
+    [SerializeField] GameObject deathTecxt;
+    [SerializeField] AttackSystem attacks;
 
     [Header("Enemy VARS")]
     public bool isEnemy;
@@ -67,9 +70,14 @@ public class HealthSystem : MonoBehaviour
         {
 			if (IsPlayer)
 			{
-                //cc.moveSpeed = 0;
-                //anim.SetTrigger("death");
                 dead = true;
+                cc.enabled = false;
+                //anim.SetTrigger("death");
+                if (!PlayerIsDeadTextCalled)
+				{
+                    attacks.enabled = false;
+                    deathTecxt.SetActive(true);
+                }
             }
 			else
 			{

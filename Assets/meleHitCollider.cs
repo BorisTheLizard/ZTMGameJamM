@@ -21,6 +21,7 @@ public class meleHitCollider : MonoBehaviour
 	{
 		if (other.tag == "enemy")
 		{
+
 			other.GetComponent<HealthSystem>().TakeDamage(damageAmount);
 			GameObject hitImpact = pool.GetObject(HitImpactIndex);
 			source.GenerateImpulse();
