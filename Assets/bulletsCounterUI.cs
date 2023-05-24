@@ -16,6 +16,6 @@ public class bulletsCounterUI : MonoBehaviour
 
 	private void Update()
 	{
-		counterText.text = "X " + bulletsCount.bulletsInClip.ToString();
+		counterText.text = "X" + bulletsCount.bulletsInClip.ToString();
 	}
 }

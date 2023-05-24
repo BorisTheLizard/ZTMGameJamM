@@ -26,6 +26,7 @@ public class spawner : MonoBehaviour
     [SerializeField] GameObject lineRenderer;
     [SerializeField] GameObject chargedParts;
     AudioSource audioSource;
+    [SerializeField] GameObject EMPchargedText;
 
     public int activeEnemies;
 
@@ -88,12 +89,12 @@ public class spawner : MonoBehaviour
 
         if (remainingTime <= 0.0f)
         {
-			//End LvL, Emp blasts Impulse and kill robots;
 			if (!chargedEMP)
 			{
                 chargedEMP = true;
                 inactiveButtonMat.GetComponent<MeshRenderer>().material = ActiveButtonMat;
                 EMPchargedButtonTrigger.SetActive(true);
+                EMPchargedText.SetActive(true);
                 audioSource.Play();
                 lineRenderer.SetActive(false);
                 chargedParts.SetActive(true);

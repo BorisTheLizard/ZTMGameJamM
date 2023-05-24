@@ -43,6 +43,10 @@ public class enemyAI : MonoBehaviour
 	public int dropObject = 2;
 	public bool haveLoot = false;
 
+	//audio
+	AudioSource audioSource;
+	[SerializeField] AudioClip shootClip;
+
 
 	private void Start()
 	{
@@ -52,6 +56,7 @@ public class enemyAI : MonoBehaviour
 		empTolookAT = GameObject.FindGameObjectWithTag("EMP").transform;
 		pool = FindObjectOfType<GameObjectPool>();
 		fov = GetComponent<fieldOfView>();
+		audioSource = GetComponent<AudioSource>();
 	}
 	private void OnDisable()
 	{
@@ -181,6 +186,7 @@ public class enemyAI : MonoBehaviour
 		{
 			attackTime = Time.time + MaxAttackTime;
 			muzzleflash.Play();
+			audioSource.PlayOneShot(shootClip);
 			GameObject obj = pool.GetObject(0);
 			if (obj != null)
 			{

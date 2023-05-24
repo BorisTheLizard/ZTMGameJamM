@@ -32,6 +32,8 @@ public class playerController : MonoBehaviour
     public float SpeedChangeRate = 10.0f;
     public bool grabbingSnow = false;
 
+    [SerializeField] GameObject effector;
+
     void Start()
     {
         mainCamera = FindObjectOfType<Camera>();
@@ -47,8 +49,6 @@ public class playerController : MonoBehaviour
 
         CCSpeed = Mathf.Lerp(CCSpeed, (transform.position - lastPosition).magnitude / Time.deltaTime, 0.75f);
         lastPosition = transform.position;
-
-        //dashCoolDown = maxDashCoolDown;
     }
 
     public void PlayerMove()
@@ -86,7 +86,9 @@ public class playerController : MonoBehaviour
         {
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
             Debug.DrawLine(cameraRay.origin, pointToLook, color: Color.red);
-            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+            Vector3 lookOnPoint = (new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+            transform.LookAt(lookOnPoint);
+            effector.transform.position = lookOnPoint;
         }
     }
     IEnumerator Dash()

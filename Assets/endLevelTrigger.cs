@@ -16,6 +16,7 @@ public class endLevelTrigger : MonoBehaviour
 	[SerializeField] GameObject chargedParts;
 	[SerializeField] GameObject chargedBurst;
 	[SerializeField] GameObject endLvlDarkScreen;
+	[SerializeField] GameObject empText;
 	//off music
 	[SerializeField] CombatMusic combatMusic;
 	[SerializeField] GameObject combatMusicObj;
@@ -44,6 +45,7 @@ public class endLevelTrigger : MonoBehaviour
 			combatMusic.enabled = false;
 			combatMusicObj.SetActive(false);
 			endLvlDarkScreen.SetActive(true);
+			empText.SetActive(false);
 			this.gameObject.GetComponent<BoxCollider>().isTrigger = false;
 			this.gameObject.GetComponent<BoxCollider>().enabled = false;
 		}
