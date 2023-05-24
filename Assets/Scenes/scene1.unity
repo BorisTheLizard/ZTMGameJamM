@@ -5059,7 +5059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoin: []
-  duration: 180
+  duration: 10
   timerText: {fileID: 1137989022}
   currentWave: 1st
   timeToSpawn: 2
