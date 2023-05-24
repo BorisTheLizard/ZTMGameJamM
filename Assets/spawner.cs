@@ -18,13 +18,20 @@ public class spawner : MonoBehaviour
     public bool spawnerAtDuty = false;
     AImanager enemyList;
 
-    //startNextLvl
-    [SerializeField] float startNextLvlTime = 3f;
+    //Emp Charged
+    public bool chargedEMP = false;
+    [SerializeField] GameObject EMPchargedButtonTrigger;
+    [SerializeField] GameObject inactiveButtonMat;
+    [SerializeField] Material ActiveButtonMat;
+    [SerializeField] GameObject lineRenderer;
+    [SerializeField] GameObject chargedParts;
+    AudioSource audioSource;
 
     public int activeEnemies;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         enemyList = FindObjectOfType<AImanager>();
         int childCount = transform.childCount;
         spawnPoin = new Transform[childCount];
@@ -81,7 +88,16 @@ public class spawner : MonoBehaviour
 
         if (remainingTime <= 0.0f)
         {
-            //End LvL, Emp blasts Impulse and kill robots;
+			//End LvL, Emp blasts Impulse and kill robots;
+			if (!chargedEMP)
+			{
+                chargedEMP = true;
+                inactiveButtonMat.GetComponent<MeshRenderer>().material = ActiveButtonMat;
+                EMPchargedButtonTrigger.SetActive(true);
+                audioSource.Play();
+                lineRenderer.SetActive(false);
+                chargedParts.SetActive(true);
+            }
         }
     }
     private void spawnEnemy()
@@ -134,12 +150,5 @@ public class spawner : MonoBehaviour
         enemyList.MakeAgentsCircleTarget();
         spawnEnemy();
         spawnerAtDuty = false;
-    }
-    IEnumerator LoadNextLevel()
-    {
-        yield return new WaitForSeconds(startNextLvlTime);
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextSceneIndex = currentSceneIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex);
     }
 }

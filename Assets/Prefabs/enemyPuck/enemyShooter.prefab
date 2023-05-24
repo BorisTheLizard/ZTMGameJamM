@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &490521317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 490521318}
+  m_Layer: 7
+  m_Name: shootingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &490521318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490521317}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0.818}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7521068997140938432}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7521068997140938438
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,8 +43,8 @@ GameObject:
   - component: {fileID: 7521068997140938434}
   - component: {fileID: 7521068997140938437}
   - component: {fileID: 7521068997140938436}
-  - component: {fileID: 7521068997140938439}
   - component: {fileID: 7521068997140938433}
+  - component: {fileID: 921885720}
   m_Layer: 7
   m_Name: enemyShooter
   m_TagString: enemy
@@ -29,12 +59,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7521068997140938438}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.7, y: -9.684203, z: 42.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7521068998177967321}
   - {fileID: 9206245198391812084}
+  - {fileID: 490521318}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,10 +128,10 @@ MonoBehaviour:
   agentSpeed: 2
   currentState: IDLE
   SearchRadius: 10
-  isMele: 1
+  isMele: 0
   MaxAttackTime: 1
   projectile: {fileID: 0}
-  shootingPoint: {fileID: 0}
+  shootingPoint: {fileID: 490521318}
   forcePower: 100
   canShoot: 1
   hitCollider: {fileID: 7521068998177967320}
@@ -108,31 +139,10 @@ MonoBehaviour:
   CCSpeed: 0
   lastPosition: {x: 0, y: 0, z: 0}
   distanceDebug: 0
+  PlayerTransform: {fileID: 0}
+  deathEffectIndex: 5
   dropObject: 3
   haveLoot: 1
---- !u!114 &7521068997140938439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7521068997140938438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f04ad5d5939ca414084185c2c3617f95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewRadius: 8.81
-  viewAngle: 99
-  visibleTargets: []
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  seeEnemy: 0
-  SeeTarget: {fileID: 0}
 --- !u!114 &7521068997140938433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,9 +163,36 @@ MonoBehaviour:
   IsPlayer: 0
   PlayerHealthBar: {fileID: 0}
   isEnemy: 0
+  EMPattackedText: {fileID: 0}
   isEMP: 0
   empHealthBar: {fileID: 0}
   timeToReloadLvl: 3
+  Defeated: 0
+  flame: {fileID: 0}
+  lineRender: {fileID: 0}
+--- !u!114 &921885720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521068997140938438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04ad5d5939ca414084185c2c3617f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 8
+  viewAngle: 93
+  visibleTargets: []
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 393
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  seeEnemy: 0
+  SeeTarget: {fileID: 0}
 --- !u!1 &7521068998177967320
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c597bf4e7dfc54e448c451fb31062446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 1
+  damageAmount: 2
   timeToOff: 0.1
 --- !u!1001 &5998055829125879531
 PrefabInstance:

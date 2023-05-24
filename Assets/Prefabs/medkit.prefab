@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6478b5bc9035ab40ab746a08ca95053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healAmount: 3
+  healAmount: 6
   healSound: {fileID: 8300000, guid: eaa9fa7cae50187448ad2ee07270de0e, type: 3}
 --- !u!1001 &4343892946333213535
 PrefabInstance:

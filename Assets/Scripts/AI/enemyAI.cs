@@ -8,7 +8,6 @@ public class enemyAI : MonoBehaviour
 	NavMeshAgent agent;
 	public float agentSpeed = 4.5f;
 	public string currentState = "IDLE";
-	fieldOfView fov;
 	public float SearchRadius = 20f;
 
 	private Vector3 prevPosition;
@@ -22,9 +21,9 @@ public class enemyAI : MonoBehaviour
 	public float MaxAttackTime;
 	[SerializeField] GameObject projectile;
 	[SerializeField] Transform shootingPoint;
-	[SerializeField] float forcePower = 100f;
 	public bool canShoot = true;
 	[SerializeField] GameObject hitCollider;
+	[SerializeField] ParticleSystem muzzleflash;
 
 	//animator
 	[SerializeField] Animator anim;
@@ -35,6 +34,8 @@ public class enemyAI : MonoBehaviour
 	private Vector3 empTransform;
 	private Transform empTolookAT;
 	public float distanceDebug;
+	[SerializeField] Transform PlayerTransform;
+	fieldOfView fov;
 
 	//drop on death
 	[SerializeField] int deathEffectIndex = 5;
@@ -47,10 +48,10 @@ public class enemyAI : MonoBehaviour
 	{
 		agent = GetComponent<NavMeshAgent>();
 		prevPosition = transform.position;
-		fov = GetComponent<fieldOfView>();
 		health = GetComponent<HealthSystem>();
 		empTolookAT = GameObject.FindGameObjectWithTag("EMP").transform;
 		pool = FindObjectOfType<GameObjectPool>();
+		fov = GetComponent<fieldOfView>();
 	}
 	private void OnDisable()
 	{
@@ -64,12 +65,19 @@ public class enemyAI : MonoBehaviour
 	private void Update()
 	{
 		speedCounter();
+		float PlayerDistance = Vector3.Distance(agent.transform.position, PlayerTransform.position);
+		float EmpDistance = Vector3.Distance(agent.transform.position, empTransform);
+
 		if (health.dead)
 		{
 			//explosionEffect
 			this.gameObject.SetActive(false);
 			health.Health = health.MaxHealth;
 			health.dead = false;
+			if (!isMele)
+			{
+				fov.StopAllCoroutines();
+			}
 			
 			if (haveLoot)
 			{
@@ -93,22 +101,93 @@ public class enemyAI : MonoBehaviour
 		if (currentState == "IDLE")
 		{
 			rotationTowardsDirection();
-			float distance = Vector3.Distance(agent.transform.position, empTransform);
-			distanceDebug = distance;
+			
+			distanceDebug = EmpDistance;
 
-			if (distance < 3)
+			if (PlayerDistance<8)
+			{
+				currentState = "Attack";
+			}
+
+			if (EmpDistance < 5)
 			{
 				currentState = "AttackEMP";
 			}
 		}
+
 		else if (currentState == "Attack")
 		{
+			if (isMele)
+			{
+				if (PlayerDistance > 8)
+				{
+					currentState = "IDLE";
+				}
+				else
+				{
+					if (PlayerDistance <= 2)
+					{
+						attack();
+					}
+					else
+					{
+						agent.SetDestination(PlayerTransform.position);
+					}
+					if (PlayerDistance > 8)
+					{
+						currentState = "IDLE";
+					}
+				}
+			}
+			else
+			{
+				if (fov.seeEnemy)
+				{
+					//Vector3 pos = transform.position;
+					//pos.z = PlayerTransform.position.z;
+					transform.LookAt(new Vector3(PlayerTransform.position.x,transform.position.y, PlayerTransform.position.z));
+					shoot();
+				}
+				else
+				{
+					agent.SetDestination(PlayerTransform.position);
+				}
+				if (PlayerDistance > 8)
+				{
+					currentState = "IDLE";
+				}
+			}
 
 		}
+
 		else if (currentState == "AttackEMP")
 		{
 			transform.LookAt(empTolookAT);
-			attack();
+			//isMele = true;
+
+			if (EmpDistance > 2)
+			{
+				//anim?
+			}
+			else
+			{
+				attack();
+			}
+		}
+	}
+	void shoot()
+	{
+		if (Time.time > attackTime)
+		{
+			attackTime = Time.time + MaxAttackTime;
+			muzzleflash.Play();
+			GameObject obj = pool.GetObject(0);
+			if (obj != null)
+			{
+				obj.transform.position = shootingPoint.transform.position;
+				obj.transform.rotation = shootingPoint.transform.rotation;
+				obj.SetActive(true);
+			}
 		}
 	}
 	void attack()
@@ -116,15 +195,9 @@ public class enemyAI : MonoBehaviour
 		if (Time.time > attackTime)
 		{
 			attackTime = Time.time + MaxAttackTime;
-			if (isMele)
-			{
-				anim.SetTrigger("attack");
-				hitCollider.SetActive(true);
-			}
-			else
-			{
-				//shooting anim and methode
-			}
+			//if (isMele)
+			anim.SetTrigger("attack");
+			hitCollider.SetActive(true);
 		}
 	}
 	void rotationTowardsDirection()
@@ -151,16 +224,4 @@ public class enemyAI : MonoBehaviour
 		empTransform = position;
 		agent.SetDestination(position);
 	}
-
-/*	public void AnimatorController()
-	{
-		if (CCSpeed < 0.5f)
-		{
-			anim.SetBool("walk", false);
-		}
-		else
-		{
-			anim.SetBool("walk", !false);
-		}
-	}*/
 }

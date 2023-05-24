@@ -22,19 +22,33 @@ public class HealthSystem : MonoBehaviour
 
     [Header("Enemy VARS")]
     public bool isEnemy;
+    private int looseHealth;
+    [SerializeField] GameObject EMPattackedText;
 
 
     [Header("EMP VARS")]
     public bool isEMP;
     [SerializeField] Image empHealthBar;
     [SerializeField] float timeToReloadLvl = 3f;
+    public bool Defeated = false;
+    [SerializeField] ParticleSystem flame;
+    [SerializeField] GameObject lineRender;
+    AudioSource audioSource;
+    [SerializeField] AudioClip anderAttack;
+    [SerializeField] GameObject PressImpulseTrig;
+
+    //off music
+    [SerializeField] CombatMusic music;
+    [SerializeField] GameObject musicObject;
+    [SerializeField] AudioClip explosionSound;
 
 
     private void Start()
     {
         Health = MaxHealth;
-
-        if (IsPlayer)
+        looseHealth = Health;
+        audioSource = GetComponent<AudioSource>();
+        if (IsPlayer || isEMP)
         {
             sourse = GetComponent<CinemachineImpulseSource>();
         }
@@ -53,8 +67,8 @@ public class HealthSystem : MonoBehaviour
         {
 			if (IsPlayer)
 			{
-                cc.moveSpeed = 0;
-                anim.SetTrigger("death");
+                //cc.moveSpeed = 0;
+                //anim.SetTrigger("death");
                 dead = true;
             }
 			else
@@ -85,10 +99,34 @@ public class HealthSystem : MonoBehaviour
             float maxHealth = MaxHealth;
             empHealthBar.fillAmount = currentHealth / maxHealth;
 
+			if (looseHealth != Health)
+			{
+                EMPattackedText.SetActive(true);
+				if (!audioSource.isPlaying && !dead)
+				{
+                    audioSource.PlayOneShot(anderAttack);
+                }
+                looseHealth = Health;
+            }
+
 			if (dead == true)
 			{
-                StartCoroutine(ReloadLevel());
+				if (!Defeated)
+				{
+                    Defeated = true;
+                    anim.SetTrigger("dead");
+                    StartCoroutine(ReloadLevel());
+                    lineRender.SetActive(false);
+                    flame.Play();
+                    PressImpulseTrig.SetActive(false);
+                    audioSource.Stop();
+                    music.enabled = false;
+                    musicObject.SetActive(false);
+                    sourse.GenerateImpulse();
+                    audioSource.PlayOneShot(explosionSound);
+                }
 			}
+
         }
 		if (IsPlayer)
 		{

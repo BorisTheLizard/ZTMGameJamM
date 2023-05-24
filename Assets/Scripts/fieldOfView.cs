@@ -19,13 +19,15 @@ public class fieldOfView : MonoBehaviour
 	{
 		self = this.gameObject;
 	}
-
 	private void Start()
 	{
 		StartCoroutine(findTargetsWithDelay(.2f));
 	}
-
-	IEnumerator findTargetsWithDelay(float delay)
+	private void OnEnable()
+	{
+		StartCoroutine(findTargetsWithDelay(.2f));
+	}
+	public IEnumerator findTargetsWithDelay(float delay)
 	{
 		while (true)
 		{
@@ -50,7 +52,6 @@ public class fieldOfView : MonoBehaviour
 				if (!Physics.Raycast(transform.position, dirToTarget, distToTarget, obstacleLayer) && target.gameObject!=self)
 				{
 					visibleTargets.Add(target);
-					
 
 					if (visibleTargets.Contains(target))
 					{
@@ -66,7 +67,6 @@ public class fieldOfView : MonoBehaviour
 			}
 		}
 	}
-
 	public Vector3 dirFromAngle(float angleInDegrees, bool angleIsGlobal)
 	{
 		if (!angleIsGlobal)
@@ -75,5 +75,4 @@ public class fieldOfView : MonoBehaviour
 		}
 		return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
 	}
-
 }

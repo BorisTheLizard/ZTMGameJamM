@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c597bf4e7dfc54e448c451fb31062446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 1
+  damageAmount: 2
   timeToOff: 0.1
 --- !u!1 &3764910325680514267
 GameObject:
@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: 3764910325680514271}
   - component: {fileID: 3764910325680514264}
   - component: {fileID: 3764910325680514265}
-  - component: {fileID: 3764910325680514266}
   - component: {fileID: 3764910325680514268}
   m_Layer: 7
   m_Name: enemySprinter
@@ -114,7 +113,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3764910325680514267}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.12, y: -9.684203, z: -5.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -189,35 +188,15 @@ MonoBehaviour:
   forcePower: 100
   canShoot: 1
   hitCollider: {fileID: 3764910324704286405}
+  muzzleflash: {fileID: 0}
   anim: {fileID: 3335842719701732640}
   CCSpeed: 0
   lastPosition: {x: 0, y: 0, z: 0}
   distanceDebug: 0
+  PlayerTransform: {fileID: 0}
+  deathEffectIndex: 5
   dropObject: 2
   haveLoot: 0
---- !u!114 &3764910325680514266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3764910325680514267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f04ad5d5939ca414084185c2c3617f95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewRadius: 8.81
-  viewAngle: 99
-  visibleTargets: []
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  seeEnemy: 0
-  SeeTarget: {fileID: 0}
 --- !u!114 &3764910325680514268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e926087bed9fa50408ca99aa25b0f843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 3
+  MaxHealth: 1
   Health: 0
   dead: 0
   anim: {fileID: 0}
@@ -238,9 +217,14 @@ MonoBehaviour:
   IsPlayer: 0
   PlayerHealthBar: {fileID: 0}
   isEnemy: 0
+  EMPattackedText: {fileID: 0}
   isEMP: 0
   empHealthBar: {fileID: 0}
   timeToReloadLvl: 3
+  Defeated: 0
+  flame: {fileID: 0}
+  lineRender: {fileID: 0}
+  anderAttack: {fileID: 0}
 --- !u!1001 &720262783167176326
 PrefabInstance:
   m_ObjectHideFlags: 0

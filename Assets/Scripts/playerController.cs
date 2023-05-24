@@ -112,13 +112,5 @@ public class playerController : MonoBehaviour
 		{
 			anim.SetBool("walk", !false);
 		}
-		if (grabbingSnow)
-		{
-			anim.SetBool("grabSnow", true);
-		}
-		else
-		{
-			anim.SetBool("grabSnow", !true);
-		}
 	}
 }
