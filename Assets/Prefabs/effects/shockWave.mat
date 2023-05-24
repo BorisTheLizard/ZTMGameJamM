@@ -39,7 +39,7 @@ Material:
     m_Floats:
     - magnification: -0.3
     - size: 0.1
-    - speed: 0.5
+    - speed: 1
     m_Colors:
     - _focalPoint: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
