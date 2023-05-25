@@ -123,6 +123,7 @@ public class HealthSystem : MonoBehaviour
 				{
                     Defeated = true;
                     anim.SetTrigger("dead");
+                    deathTecxt.SetActive(true);
                     StartCoroutine(ReloadLevel());
                     lineRender.SetActive(false);
                     flame.Play();

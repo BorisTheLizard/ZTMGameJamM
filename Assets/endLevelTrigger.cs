@@ -29,10 +29,12 @@ public class endLevelTrigger : MonoBehaviour
 		source = GetComponent<CinemachineImpulseSource>();
 		Spawner = FindObjectOfType<spawner>();
 	}
-	private void OnTriggerEnter(Collider other)
+	private void OnTriggerStay(Collider other)
 	{
-		if (other.tag == "projectiles")
+		if (other.tag == "baton")
 		{
+			/*			if (Input.GetKeyDown(KeyCode.Mouse1))
+						{*/
 			StartCoroutine(LoadNextLevel());
 			audioSource.PlayOneShot(WaveSound);
 			shockWaveFloor.SetActive(true);
