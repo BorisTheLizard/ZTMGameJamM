@@ -20,6 +20,8 @@ public class AttackSystem : MonoBehaviour
 	[SerializeField] string[] batonAttacks;
 	private bool batonAttacking = false;
 	[SerializeField] ParticleSystem muzzleFlash;
+	//meleHitCollider
+	[SerializeField] AudioSource meleHitCol;
 
 	private void Start()
 	{
@@ -48,6 +50,7 @@ public class AttackSystem : MonoBehaviour
 			{
 				muzzleFlash.Play();
 				shootingSpeed = Time.time + maxShootingSpeed;
+				audioSource.pitch = Random.Range(0.8f, 1.5f);
 				audioSource.PlayOneShot(Shoot);
 				GameObject obj = pool.GetObject(objectIndex);
 				if (obj != null)
@@ -73,7 +76,12 @@ public class AttackSystem : MonoBehaviour
 			anim.SetTrigger(playAnim);
 			batonAttacking = true;
 		}
+		if (!meleHitCol.isPlaying)
+		{
+			meleHitCol.clip = null;
+		}
 		slash.Play();
+		audioSource.pitch = Random.Range(0.7f, 1.2f);
 		audioSource.PlayOneShot(meleAttackClip);
 		hitCollider.SetActive(true);
 		yield return new WaitForSeconds(0.2f);

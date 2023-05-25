@@ -27,6 +27,8 @@ public class spawner : MonoBehaviour
     [SerializeField] GameObject chargedParts;
     AudioSource audioSource;
     [SerializeField] GameObject EMPchargedText;
+    //empAudiosource
+    [SerializeField] AudioSource EMPsource;
 
     public int activeEnemies;
 
@@ -95,6 +97,7 @@ public class spawner : MonoBehaviour
                 inactiveButtonMat.GetComponent<MeshRenderer>().material = ActiveButtonMat;
                 EMPchargedButtonTrigger.SetActive(true);
                 EMPchargedText.SetActive(true);
+                EMPsource.Stop();
                 audioSource.Play();
                 lineRenderer.SetActive(false);
                 chargedParts.SetActive(true);

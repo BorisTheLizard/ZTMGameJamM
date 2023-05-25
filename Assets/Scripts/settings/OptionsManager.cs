@@ -10,10 +10,12 @@ public class OptionsManager : MonoBehaviour
         if (optionsWindow.activeSelf == false)
         {
             optionsWindow.SetActive(true);
+            Time.timeScale = 0;
         }
         else
         {
             optionsWindow.SetActive(false);
+            Time.timeScale = 1;
         }
     }
 }

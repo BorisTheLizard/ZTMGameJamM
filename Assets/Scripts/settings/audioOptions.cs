@@ -15,8 +15,8 @@ public class audioOptions : MonoBehaviour
     public float music;
     public float SfxVolume;
 
-    [Header("AudioSources")]
-    [SerializeField] AudioSource sFXplayer;
+    //[Header("AudioSources")]
+    //[SerializeField] AudioSource sFXplayer;
 
     public void Start()
     {
@@ -39,6 +39,6 @@ public class audioOptions : MonoBehaviour
     {
         SfxVolume = SfxSlider.value;
         SfxMixer.SetFloat("SFXVolume", Mathf.Log10(SfxVolume) * 20);
-        sFXplayer.Play();
+        //sFXplayer.Play();
     }
 }
