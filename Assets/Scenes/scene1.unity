@@ -14589,6 +14589,7 @@ MonoBehaviour:
   EMPchargedText: {fileID: 1127273551}
   EMPsource: {fileID: 1196523788}
   activeEnemies: 0
+  eMPDestroyed: 0
 --- !u!82 &1174773615
 AudioSource:
   m_ObjectHideFlags: 0
@@ -22707,7 +22708,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7775891, y: 1}
+    m_SensorSize: {x: 1.7782027, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

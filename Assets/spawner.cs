@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class spawner : MonoBehaviour
@@ -32,6 +31,8 @@ public class spawner : MonoBehaviour
 
     public int activeEnemies;
 
+    public bool eMPDestroyed = false;
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -47,7 +48,11 @@ public class spawner : MonoBehaviour
 
     private void Update()
     {
-        elapsedTime += Time.deltaTime;
+        if (eMPDestroyed == false)
+        {
+            elapsedTime += Time.deltaTime;
+        }
+
         float remainingTime = Mathf.Clamp(duration - elapsedTime, 0.0f, duration);
         int minutes = Mathf.FloorToInt(remainingTime / 60.0f);
         int seconds = Mathf.FloorToInt(remainingTime % 60.0f);
@@ -91,8 +96,8 @@ public class spawner : MonoBehaviour
 
         if (remainingTime <= 0.0f)
         {
-			if (!chargedEMP)
-			{
+            if (!chargedEMP)
+            {
                 chargedEMP = true;
                 inactiveButtonMat.GetComponent<MeshRenderer>().material = ActiveButtonMat;
                 EMPchargedButtonTrigger.SetActive(true);

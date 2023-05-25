@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Cinemachine;
-using UnityEngine.Rendering;
-using UnityEngine.UI;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -24,9 +22,11 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] AttackSystem attacks;
 
     [Header("Enemy VARS")]
-    public bool isEnemy;
+    [SerializeField] public bool isEnemy;
     private int looseHealth;
     [SerializeField] GameObject EMPattackedText;
+    [SerializeField] AudioClip[] enemyGotHitSounds;
+    [SerializeField] AudioClip[] enemyDestroyedSounds;
 
 
     [Header("EMP VARS")]
@@ -45,12 +45,19 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] GameObject musicObject;
     [SerializeField] AudioClip explosionSound;
 
+    spawner spawnerobj;
+
 
     private void Start()
     {
         Health = MaxHealth;
         looseHealth = Health;
         audioSource = GetComponent<AudioSource>();
+        if (isEMP)
+        {
+            spawnerobj = FindObjectOfType<spawner>().GetComponent<spawner>();
+        }
+        else { spawnerobj = null; }
         if (IsPlayer || isEMP)
         {
             sourse = GetComponent<CinemachineImpulseSource>();
@@ -66,61 +73,76 @@ public class HealthSystem : MonoBehaviour
             sourse.GenerateImpulse();
         }
 
+        if (isEnemy)
+        {
+            if (Health > 0)
+            {
+                audioSource.PlayOneShot(enemyGotHitSounds[Random.Range(0, enemyGotHitSounds.Length)]);
+            }
+        }
+
         if (Health <= 0)
         {
-			if (IsPlayer)
-			{
+            if (IsPlayer)
+            {
                 dead = true;
                 cc.enabled = false;
                 //anim.SetTrigger("death");
                 if (!PlayerIsDeadTextCalled)
-				{
+                {
                     attacks.enabled = false;
                     deathTecxt.SetActive(true);
                 }
             }
-			else
-			{
+            else
+            {
                 dead = true;
             }
         }
-        
+
     }
+
+    public void PlayDestroyedAudio()
+    {
+        audioSource.PlayOneShot(enemyDestroyedSounds[Random.Range(0, enemyDestroyedSounds.Length)]);
+    }
+
     public void getHeal(int heal)
-	{
+    {
         Health += heal;
 
-		if (IsPlayer)
-		{
+        if (IsPlayer)
+        {
             if (Health > MaxHealth)
-			{
+            {
                 Health = MaxHealth;
-			}
+            }
         }
     }
 
-	private void Update()
-	{
-		if (isEMP)
-		{
+    private void Update()
+    {
+        if (isEMP)
+        {
             float currentHealth = Health;
             float maxHealth = MaxHealth;
             empHealthBar.fillAmount = currentHealth / maxHealth;
 
-			if (looseHealth != Health)
-			{
+            if (looseHealth != Health)
+            {
                 EMPattackedText.SetActive(true);
-				if (!audioSource.isPlaying && !dead)
-				{
+                if (!audioSource.isPlaying && !dead)
+                {
                     audioSource.PlayOneShot(anderAttack);
                 }
                 looseHealth = Health;
             }
 
-			if (dead == true)
-			{
-				if (!Defeated)
-				{
+            if (dead == true)
+            {
+                if (!Defeated)
+                {
+                    spawnerobj.eMPDestroyed = true;
                     Defeated = true;
                     anim.SetTrigger("dead");
                     deathTecxt.SetActive(true);
@@ -134,11 +156,11 @@ public class HealthSystem : MonoBehaviour
                     sourse.GenerateImpulse();
                     audioSource.PlayOneShot(explosionSound);
                 }
-			}
+            }
 
         }
-		if (IsPlayer)
-		{
+        if (IsPlayer)
+        {
             float currentHealth = Health;
             float maxHealth = MaxHealth;
             PlayerHealthBar.fillAmount = currentHealth / maxHealth;
@@ -148,7 +170,7 @@ public class HealthSystem : MonoBehaviour
                 StartCoroutine(ReloadLevel());
             }
         }
-	}
+    }
     IEnumerator ReloadLevel()
     {
         yield return new WaitForSeconds(timeToReloadLvl);
