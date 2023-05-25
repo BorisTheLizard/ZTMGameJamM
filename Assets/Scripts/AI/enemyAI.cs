@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class enemyAI : MonoBehaviour
 {
@@ -44,6 +45,11 @@ public class enemyAI : MonoBehaviour
     //audio
     AudioSource audioSource;
     [SerializeField] AudioClip shootClip;
+    [SerializeField] AudioClip[] idleSounds;
+    public bool idleSoundInPlay = false;
+
+    public float MaxplayIDLEsound;
+    float playIdleSound;
 
 
     private void Start()
@@ -73,11 +79,11 @@ public class enemyAI : MonoBehaviour
 
         if (health.dead)
         {
-            //explosionEffect
-            health.PlayDestroyedAudio();
             this.gameObject.SetActive(false);
             health.Health = health.MaxHealth;
             health.dead = false;
+            
+
             if (!isMele)
             {
                 fov.StopAllCoroutines();
@@ -104,6 +110,10 @@ public class enemyAI : MonoBehaviour
 
         if (currentState == "IDLE")
         {
+			if (Time.time>playIdleSound)
+			{
+                playIdleSoundFunk();
+            }
             rotationTowardsDirection();
 
             distanceDebug = EmpDistance;
@@ -228,5 +238,17 @@ public class enemyAI : MonoBehaviour
     {
         empTransform = position;
         agent.SetDestination(position);
+    }
+
+    void playIdleSoundFunk()
+	{
+        MaxplayIDLEsound = Random.Range(5f, 15f);
+        playIdleSound = Time.time + MaxplayIDLEsound;
+
+        if (!audioSource.isPlaying)
+        {
+            audioSource.clip = idleSounds[Random.Range(0, idleSounds.Length)];
+            audioSource.Play();
+        }
     }
 }

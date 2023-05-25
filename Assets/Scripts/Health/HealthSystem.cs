@@ -26,7 +26,7 @@ public class HealthSystem : MonoBehaviour
     private int looseHealth;
     [SerializeField] GameObject EMPattackedText;
     [SerializeField] AudioClip[] enemyGotHitSounds;
-    [SerializeField] AudioClip[] enemyDestroyedSounds;
+    //[SerializeField] AudioClip[] enemyDestroyedSounds;
 
 
     [Header("EMP VARS")]
@@ -102,10 +102,10 @@ public class HealthSystem : MonoBehaviour
 
     }
 
-    public void PlayDestroyedAudio()
+/*    public void PlayDestroyedAudio()
     {
         audioSource.PlayOneShot(enemyDestroyedSounds[Random.Range(0, enemyDestroyedSounds.Length)]);
-    }
+    }*/
 
     public void getHeal(int heal)
     {

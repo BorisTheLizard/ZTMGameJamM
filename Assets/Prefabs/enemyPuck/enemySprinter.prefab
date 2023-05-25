@@ -198,6 +198,16 @@ MonoBehaviour:
   dropObject: 2
   haveLoot: 0
   shootClip: {fileID: 0}
+  idleSounds:
+  - {fileID: 8300000, guid: cd715fd19435a524bb79975753db77a1, type: 3}
+  - {fileID: 8300000, guid: 8ca13a33721c6e441b4168fea17f70bd, type: 3}
+  - {fileID: 8300000, guid: ecdaa12e54814234c932355971f31ae0, type: 3}
+  - {fileID: 8300000, guid: ad082e3c4ba4b514f9b921e4fb03625d, type: 3}
+  - {fileID: 8300000, guid: 252ce787ef8d59542a6a70d69a5abc2a, type: 3}
+  - {fileID: 8300000, guid: 89489a53fe52fab42b74d7a5de3e0fc9, type: 3}
+  - {fileID: 8300000, guid: 06998e5e350cfe14b9b46c3bf3322eb7, type: 3}
+  idleSoundInPlay: 0
+  MaxplayIDLEsound: 0
 --- !u!114 &3764910325680514268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,11 +239,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 71d14b9787328934fb90f2d932a21182, type: 3}
   - {fileID: 8300000, guid: 1e60686e737300b41ad7894ce85bc239, type: 3}
   - {fileID: 8300000, guid: 670297e1067959c459f9763bb49346fc, type: 3}
-  enemyDestroyedSounds:
-  - {fileID: 8300000, guid: fd0fec83bd9fc4f438b2acd9f35fe2e4, type: 3}
-  - {fileID: 8300000, guid: 287e72efa13b5b44daab8e76d48c816e, type: 3}
-  - {fileID: 8300000, guid: 7933e71433684ca40bec793d6d860f5a, type: 3}
-  - {fileID: 8300000, guid: 4e53ce198d10629478765b5381675069, type: 3}
   isEMP: 0
   empHealthBar: {fileID: 0}
   timeToReloadLvl: 3
@@ -256,7 +261,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -8163263720183812299, guid: 3d27a03542e2cc14c9d7bc7422e2f0bd, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -266,9 +271,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 45
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -301,7 +306,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
