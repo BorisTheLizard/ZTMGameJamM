@@ -79,6 +79,7 @@ public class enemyAI : MonoBehaviour
 
         if (health.dead)
         {
+            audioSource.Stop();
             this.gameObject.SetActive(false);
             health.Health = health.MaxHealth;
             health.dead = false;
@@ -248,7 +249,10 @@ public class enemyAI : MonoBehaviour
         if (!audioSource.isPlaying)
         {
             audioSource.clip = idleSounds[Random.Range(0, idleSounds.Length)];
-            audioSource.Play();
+			if (this.gameObject.activeSelf == true)
+			{
+                audioSource.Play();
+            }
         }
     }
 }
