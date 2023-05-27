@@ -19,6 +19,8 @@ public class playerController : MonoBehaviour
     [SerializeField] TrailRenderer trail;
     float dashCoolDown;
     [SerializeField] float maxDashCoolDown = 1f;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip[] dashClips;
 
 
     public float CCSpeed;
@@ -72,6 +74,8 @@ public class playerController : MonoBehaviour
 			{
                 dashCoolDown = Time.time + maxDashCoolDown;
                 StartCoroutine(Dash());
+                audioSource.clip = dashClips[Random.Range(0, dashClips.Length)];
+                audioSource.Play();
             }
 		}
     }

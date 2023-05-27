@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 4490262017000211555}
   - component: {fileID: 720371529224096710}
   - component: {fileID: 3322444172696616716}
-  m_Layer: 0
+  - component: {fileID: 8734734227809348486}
+  m_Layer: 8
   m_Name: light
-  m_TagString: Untagged
+  m_TagString: obstacles
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4490262017000211555
 Transform:
@@ -84,6 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8734734227809348486
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3826737172858953433}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4711208715938537054, guid: 58467d411b258964b9a969b3b9f2d37c, type: 3}
 --- !u!1 &5610157355802446317
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,12 +110,12 @@ GameObject:
   - component: {fileID: 4322093554229651647}
   - component: {fileID: 4490895355343213198}
   - component: {fileID: 5259936367544589618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4322093554229651647
 Transform:
@@ -110,7 +125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5610157355802446317}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -3.47, y: 0, z: 3.16}
+  m_LocalPosition: {x: -3.47, y: -0, z: 1.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4490262017000211555}
@@ -128,7 +143,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 150
+  m_Intensity: 300
   m_Range: 22.6
   m_SpotAngle: 96.18318
   m_InnerSpotAngle: 59.47557
@@ -162,7 +177,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295

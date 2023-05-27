@@ -9,6 +9,7 @@ public class finalScreen : MonoBehaviour
 	[SerializeField] Animator anim;
 	[SerializeField] GameObject credits;
 	[SerializeField] GameObject skip;
+	[SerializeField] AudioSource musicSource;
 	
 	private IEnumerator Start()
 	{
@@ -17,6 +18,7 @@ public class finalScreen : MonoBehaviour
 		audioSource.Play();
 		credits.SetActive(true);
 		skip.SetActive(true);
+		musicSource.Play();
 		anim.SetTrigger("dance");
 	}
 }

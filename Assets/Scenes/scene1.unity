@@ -7361,6 +7361,8 @@ MonoBehaviour:
   NewGameTimeLine: {fileID: 0}
   optionsMenu: {fileID: 0}
   mainMenu: {fileID: 0}
+  credits: {fileID: 0}
+  returnFromCredits: {fileID: 0}
 --- !u!1 &692286970
 GameObject:
   m_ObjectHideFlags: 0
@@ -20784,6 +20786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342f32da74f9dbb4fa58c6070a8a91a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxFontSize: 300
 --- !u!114 &1783476647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21351,6 +21354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342f32da74f9dbb4fa58c6070a8a91a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxFontSize: 300
 --- !u!1 &1817113334
 GameObject:
   m_ObjectHideFlags: 0
@@ -22727,7 +22731,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7778761, y: 1}
+    m_SensorSize: {x: 1.7778794, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

@@ -20,6 +20,8 @@ public class HealthSystem : MonoBehaviour
     public bool PlayerIsDeadTextCalled = false;
     [SerializeField] GameObject deathTecxt;
     [SerializeField] AttackSystem attacks;
+    [SerializeField] AudioSource PlayerSoundsSource;
+    [SerializeField] AudioClip[] takeDamageSounds;
 
     [Header("Enemy VARS")]
     [SerializeField] public bool isEnemy;
@@ -71,6 +73,8 @@ public class HealthSystem : MonoBehaviour
         if (IsPlayer)
         {
             sourse.GenerateImpulse();
+            PlayerSoundsSource.clip = takeDamageSounds[Random.Range(0, takeDamageSounds.Length)];
+            PlayerSoundsSource.Play();
         }
 
         if (isEnemy)
