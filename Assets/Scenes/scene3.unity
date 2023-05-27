@@ -6952,6 +6952,7 @@ GameObject:
   m_Component:
   - component: {fileID: 701796982}
   - component: {fileID: 701796981}
+  - component: {fileID: 701796983}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -6978,11 +6979,11 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: -1
+    m_Resolution: 128
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0.02
-    m_NormalBias: 0.1
+    m_Bias: 0
+    m_NormalBias: 0
     m_NearPlane: 0.1
     m_CullingMatrixOverride:
       e00: 1
@@ -7035,6 +7036,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &701796983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701796980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 0
 --- !u!1001 &706701001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19945,6 +19960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342f32da74f9dbb4fa58c6070a8a91a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxFontSize: 300
 --- !u!114 &1783476647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20255,7 +20271,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Area Clear!
+  m_Text: "You have stopped \nAI revolution \nand saved the world!"
 --- !u!222 &1813419137
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20276,6 +20292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342f32da74f9dbb4fa58c6070a8a91a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxFontSize: 150
 --- !u!4 &1824302349 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8486364365663538459, guid: 1b9846ae177b5d8478a133dc6e507d5c, type: 3}
@@ -23377,6 +23394,10 @@ PrefabInstance:
       propertyPath: endLvlDarkScreen
       value: 
       objectReference: {fileID: 1020802648}
+    - target: {fileID: 557387379, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
+      propertyPath: startNextLvlTime
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3520132322926795692, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: m_Name
       value: EMP

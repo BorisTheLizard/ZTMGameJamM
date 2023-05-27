@@ -7,6 +7,7 @@ public class textSizeOnEnable : MonoBehaviour
 {
 	Text text;
 	private bool lvlEnd = false;
+	public int maxFontSize = 300;
 
 	private void Start()
 	{
@@ -20,7 +21,7 @@ public class textSizeOnEnable : MonoBehaviour
 	{
 		if (lvlEnd)
 		{
-			if(text.fontSize<300)
+			if(text.fontSize< maxFontSize)
 			text.fontSize += 1;
 		}
 	}

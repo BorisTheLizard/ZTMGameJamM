@@ -11,6 +11,9 @@ public class mainMenuEvents : MonoBehaviour
 	[SerializeField] GameObject optionsMenu;
 	[SerializeField] GameObject mainMenu;
 
+	[SerializeField] GameObject credits;
+	[SerializeField] GameObject returnFromCredits;
+
 	private void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
@@ -39,5 +42,19 @@ public class mainMenuEvents : MonoBehaviour
 	{
 		optionsMenu.SetActive(!true);
 		mainMenu.SetActive(!false);
+	}
+
+	public void callCredits()
+	{
+		credits.SetActive(true);
+		mainMenu.SetActive(false);
+		returnFromCredits.SetActive(true);
+	}
+
+	public void closeCredits()
+	{
+		credits.SetActive(!true);
+		mainMenu.SetActive(!false);
+		returnFromCredits.SetActive(!true);
 	}
 }
