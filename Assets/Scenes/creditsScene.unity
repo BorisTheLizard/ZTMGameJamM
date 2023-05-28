@@ -3056,11 +3056,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1627348728942144136, guid: 3d27a03542e2cc14c9d7bc7422e2f0bd, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 176d2a1d48db7ec4d9123b107d6e303e, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 5133c4be59341ba4fbe59429100a2d20, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3872,7 +3872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7bee2553a8048242923df921e9c0ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsToWait: 10
+  secondsToWait: 12
   audioSource: {fileID: 684505515}
   anim: {fileID: 684505513}
   credits: {fileID: 1758087399}
@@ -4376,7 +4376,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7778794, y: 1}
+    m_SensorSize: {x: 1.7772194, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

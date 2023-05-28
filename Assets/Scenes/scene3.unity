@@ -19945,7 +19945,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You have stopped \nAI revolution \nand saved the world!"
+  m_Text: "You have stopped \nthe AI revolution \nand saved the world!"
 --- !u!222 &1813419137
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23032,6 +23032,10 @@ PrefabInstance:
       propertyPath: music
       value: 
       objectReference: {fileID: 696855567}
+    - target: {fileID: 3520132322926795695, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
+      propertyPath: MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3520132322926795695, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: deathTecxt
       value: 

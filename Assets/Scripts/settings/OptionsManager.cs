@@ -5,6 +5,12 @@ public class OptionsManager : MonoBehaviour
     [SerializeField] private GameObject optionsWindow;
     [SerializeField] playerController cc;
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        { OpenCloseOptionswindow(); }
+    }
     public void OpenCloseOptionswindow()
     {
         if (optionsWindow.activeSelf == false)

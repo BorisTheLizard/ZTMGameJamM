@@ -358,30 +358,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionsButton
       objectReference: {fileID: 0}
-    - target: {fileID: 3996532290801702145, guid: 9ee6e02f0820c944d90590459989ba32, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996532290801702174, guid: 9ee6e02f0820c944d90590459989ba32, type: 3}
-      propertyPath: m_Color.b
-      value: 0.2028302
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996532290801702174, guid: 9ee6e02f0820c944d90590459989ba32, type: 3}
-      propertyPath: m_Color.g
-      value: 0.5036504
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996532290801702174, guid: 9ee6e02f0820c944d90590459989ba32, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996532290801702175, guid: 9ee6e02f0820c944d90590459989ba32, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1180414187}
-    - target: {fileID: 3996532290801702175, guid: 9ee6e02f0820c944d90590459989ba32, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenCloseOptionswindow
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ee6e02f0820c944d90590459989ba32, type: 3}
 --- !u!224 &44954237 stripped
@@ -11840,7 +11816,7 @@ AudioSource:
   m_GameObject: {fileID: 1020802648}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1627348728942144136, guid: 3d27a03542e2cc14c9d7bc7422e2f0bd, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -13827,7 +13803,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: EMP is Charged! slap button!
+  m_Text: EMP is Charged! Hit the button!
 --- !u!222 &1127273555
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21342,7 +21318,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Area Clear!
+  m_Text: Area Cleared!
 --- !u!222 &1813419137
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25473,6 +25449,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1127273551}
     - target: {fileID: 557387379, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
+      propertyPath: WaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ed325965e4dc9643891a68382badff4, type: 3}
+    - target: {fileID: 557387379, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: combatMusic
       value: 
       objectReference: {fileID: 696855567}
@@ -25542,7 +25522,7 @@ PrefabInstance:
       objectReference: {fileID: 696855567}
     - target: {fileID: 3520132322926795695, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: MaxHealth
-      value: 90
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 3520132322926795695, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: deathTecxt
@@ -25556,6 +25536,10 @@ PrefabInstance:
       propertyPath: empHealthBar
       value: 
       objectReference: {fileID: 1335809004}
+    - target: {fileID: 3520132322926795695, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
+      propertyPath: explosionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 3712bc2024a3fb7448283b0b840e95f8, type: 3}
     - target: {fileID: 3520132322926795695, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: EMPattackedText
       value: 

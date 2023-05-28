@@ -41,11 +41,11 @@ public class HealthSystem : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] AudioClip anderAttack;
     [SerializeField] GameObject PressImpulseTrig;
-
     //off music
     [SerializeField] CombatMusic music;
     [SerializeField] GameObject musicObject;
     [SerializeField] AudioClip explosionSound;
+
 
     spawner spawnerobj;
 
@@ -106,10 +106,10 @@ public class HealthSystem : MonoBehaviour
 
     }
 
-/*    public void PlayDestroyedAudio()
-    {
-        audioSource.PlayOneShot(enemyDestroyedSounds[Random.Range(0, enemyDestroyedSounds.Length)]);
-    }*/
+    /*    public void PlayDestroyedAudio()
+        {
+            audioSource.PlayOneShot(enemyDestroyedSounds[Random.Range(0, enemyDestroyedSounds.Length)]);
+        }*/
 
     public void getHeal(int heal)
     {
