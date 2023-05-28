@@ -50,7 +50,7 @@ public class AttackSystem : MonoBehaviour
 			{
 				muzzleFlash.Play();
 				shootingSpeed = Time.time + maxShootingSpeed;
-				audioSource.pitch = Random.Range(0.8f, 1.5f);
+				audioSource.pitch = Random.Range(0.9f, 1.1f);
 				audioSource.PlayOneShot(Shoot);
 				GameObject obj = pool.GetObject(objectIndex);
 				if (obj != null)

@@ -340,7 +340,7 @@ MonoBehaviour:
   deathEffectIndex: 5
   dropObject: 3
   haveLoot: 1
-  shootClip: {fileID: 8300000, guid: f80a8a93ce2a81d4ca07f0fe6c9e6b27, type: 3}
+  shootClip: {fileID: 8300000, guid: 66cf762fd1b46ea4fa90aa0b730dd3ba, type: 3}
   idleSounds:
   - {fileID: 8300000, guid: cd715fd19435a524bb79975753db77a1, type: 3}
   - {fileID: 8300000, guid: 8ca13a33721c6e441b4168fea17f70bd, type: 3}
@@ -373,6 +373,8 @@ MonoBehaviour:
   PlayerIsDeadTextCalled: 0
   deathTecxt: {fileID: 0}
   attacks: {fileID: 0}
+  PlayerSoundsSource: {fileID: 0}
+  takeDamageSounds: []
   isEnemy: 1
   EMPattackedText: {fileID: 0}
   enemyGotHitSounds:

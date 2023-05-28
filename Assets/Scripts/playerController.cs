@@ -25,14 +25,9 @@ public class playerController : MonoBehaviour
 
     public float CCSpeed;
     [SerializeField] Vector3 lastPosition;
-    public bool isRunning = false;
 
     private bool groundedPlayer;
     private float gravityValue = -100f;
-
-    public Vector3 playerDir;
-    public float SpeedChangeRate = 10.0f;
-    public bool grabbingSnow = false;
 
     [SerializeField] GameObject effector;
 

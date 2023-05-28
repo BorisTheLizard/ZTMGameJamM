@@ -675,7 +675,7 @@ MonoBehaviour:
   shootingPoint: {fileID: 205280331853956327}
   slash: {fileID: 4805514536182556716}
   click: {fileID: 8300000, guid: 3b219dc69987de14e832cb187e687c4f, type: 3}
-  Shoot: {fileID: 8300000, guid: f80a8a93ce2a81d4ca07f0fe6c9e6b27, type: 3}
+  Shoot: {fileID: 8300000, guid: 66cf762fd1b46ea4fa90aa0b730dd3ba, type: 3}
   meleAttackClip: {fileID: 8300000, guid: f311a7c08d0b3b942a028ab8c373d1a8, type: 3}
   batonAttacks: []
   muzzleFlash: {fileID: 510424613340093008}
@@ -691,14 +691,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -8163263720183812299, guid: 3d27a03542e2cc14c9d7bc7422e2f0bd, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 79
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1091,7 +1091,7 @@ AudioSource:
   m_GameObject: {fileID: 1015601909189600926}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8163263720183812299, guid: 3d27a03542e2cc14c9d7bc7422e2f0bd, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.349
