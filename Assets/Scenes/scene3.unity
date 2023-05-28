@@ -23046,7 +23046,7 @@ PrefabInstance:
       objectReference: {fileID: 696855567}
     - target: {fileID: 3520132322926795695, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: MaxHealth
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3520132322926795695, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: deathTecxt

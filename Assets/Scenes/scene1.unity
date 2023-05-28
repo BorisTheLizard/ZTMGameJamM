@@ -19716,8 +19716,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.6911854, y: -0.001634305, z: -0.004390394, w: 0.7226623}
-  m_LocalPosition: {x: -15.39623, y: -3.832738, z: -4.54891}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -15.493461, y: -3.0200005, z: -4.449996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 643514728}
@@ -25537,7 +25537,7 @@ PrefabInstance:
       objectReference: {fileID: 696855567}
     - target: {fileID: 3520132322926795695, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: MaxHealth
-      value: 120
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 3520132322926795695, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: deathTecxt
