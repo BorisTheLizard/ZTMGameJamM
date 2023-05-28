@@ -2721,7 +2721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 175d30d59bc4fdd49abb7960c38a1995, type: 3}
       propertyPath: m_Name
-      value: cop@Gangnam Style
+      value: cop
       objectReference: {fileID: 0}
     - target: {fileID: 1630794972795428178, guid: 175d30d59bc4fdd49abb7960c38a1995, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3060,7 +3060,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3726,16 +3726,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 267139111772601282, guid: 451997c9ae648f543abbd138bbf56a34, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1249
+      objectReference: {fileID: 0}
+    - target: {fileID: 267139111772601282, guid: 451997c9ae648f543abbd138bbf56a34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.46
+      value: -12.58
       objectReference: {fileID: 0}
     - target: {fileID: 267139111772601282, guid: 451997c9ae648f543abbd138bbf56a34, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.37
+      value: 4.08
       objectReference: {fileID: 0}
     - target: {fileID: 267139111772601282, guid: 451997c9ae648f543abbd138bbf56a34, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.61
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 267139111772601282, guid: 451997c9ae648f543abbd138bbf56a34, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3766,12 +3770,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 267139111772601283, guid: 451997c9ae648f543abbd138bbf56a34, type: 3}
+      propertyPath: ShapeModule.type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 267139111772601283, guid: 451997c9ae648f543abbd138bbf56a34, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 87.212006
+      objectReference: {fileID: 0}
+    - target: {fileID: 267139111772601283, guid: 451997c9ae648f543abbd138bbf56a34, type: 3}
+      propertyPath: ShapeModule.arc.mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 267139111772601283, guid: 451997c9ae648f543abbd138bbf56a34, type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 8
+      value: 9.4
       objectReference: {fileID: 0}
     - target: {fileID: 267139111772601283, guid: 451997c9ae648f543abbd138bbf56a34, type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 8
+      value: 8.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 267139111772601283, guid: 451997c9ae648f543abbd138bbf56a34, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 8.003488
+      objectReference: {fileID: 0}
+    - target: {fileID: 267139111772601283, guid: 451997c9ae648f543abbd138bbf56a34, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.27783215
+      objectReference: {fileID: 0}
+    - target: {fileID: 267139111772601283, guid: 451997c9ae648f543abbd138bbf56a34, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 267139111772601283, guid: 451997c9ae648f543abbd138bbf56a34, type: 3}
       propertyPath: InitialModule.maxNumParticles
@@ -4376,7 +4404,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7772194, y: 1}
+    m_SensorSize: {x: 1.7784091, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
