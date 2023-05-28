@@ -4389,7 +4389,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: EMP is Charged! slap button!
+  m_Text: EMP is Charged! Hit the button!
 --- !u!222 &522266268
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13754,7 +13754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13, y: -190.006}
+  m_AnchoredPosition: {x: -13, y: -348}
   m_SizeDelta: {x: 1894, y: 130.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1127273553
@@ -19716,8 +19716,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -15.493461, y: -3.0200005, z: -4.449996}
+  m_LocalRotation: {x: 0.6911854, y: -0.001634305, z: -0.004390394, w: 0.7226623}
+  m_LocalPosition: {x: -15.39623, y: -3.832738, z: -4.54891}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 643514728}
@@ -22720,7 +22720,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7778794, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
