@@ -6176,7 +6176,7 @@ AudioSource:
   m_GameObject: {fileID: 685212314}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8163263720183812299, guid: 3d27a03542e2cc14c9d7bc7422e2f0bd, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -6686,7 +6686,7 @@ AudioSource:
   m_GameObject: {fileID: 709594387}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1627348728942144136, guid: 3d27a03542e2cc14c9d7bc7422e2f0bd, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -10200,7 +10200,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.3333334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10649,7 +10649,7 @@ AudioSource:
   m_GameObject: {fileID: 1020802648}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1627348728942144136, guid: 3d27a03542e2cc14c9d7bc7422e2f0bd, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -16091,7 +16091,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.3333334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -16791,7 +16791,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.3333334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -19487,7 +19487,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.3333334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -19952,7 +19952,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.3333334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -21156,6 +21156,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1127273551}
     - target: {fileID: 557387379, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
+      propertyPath: WaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bb3d2620c4c5a8f499e28111bb958f4a, type: 3}
+    - target: {fileID: 557387379, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: combatMusic
       value: 
       objectReference: {fileID: 696855567}
@@ -21239,6 +21243,10 @@ PrefabInstance:
       propertyPath: empHealthBar
       value: 
       objectReference: {fileID: 1335809004}
+    - target: {fileID: 3520132322926795695, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
+      propertyPath: explosionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ababc23522e3e7d4ea3214abf55db18d, type: 3}
     - target: {fileID: 3520132322926795695, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: EMPattackedText
       value: 

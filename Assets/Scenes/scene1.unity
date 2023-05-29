@@ -7244,7 +7244,7 @@ AudioSource:
   m_GameObject: {fileID: 685212314}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8163263720183812299, guid: 3d27a03542e2cc14c9d7bc7422e2f0bd, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -7783,7 +7783,7 @@ AudioSource:
   m_GameObject: {fileID: 709594387}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1627348728942144136, guid: 3d27a03542e2cc14c9d7bc7422e2f0bd, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -14461,7 +14461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoin: []
-  duration: 180
+  duration: 6
   timerText: {fileID: 1137989022}
   currentWave: 1st
   timeToSpawn: 2
@@ -25466,7 +25466,7 @@ PrefabInstance:
     - target: {fileID: 557387379, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: WaveSound
       value: 
-      objectReference: {fileID: 8300000, guid: 0ed325965e4dc9643891a68382badff4, type: 3}
+      objectReference: {fileID: 8300000, guid: bb3d2620c4c5a8f499e28111bb958f4a, type: 3}
     - target: {fileID: 557387379, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: combatMusic
       value: 
@@ -25554,7 +25554,7 @@ PrefabInstance:
     - target: {fileID: 3520132322926795695, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: explosionSound
       value: 
-      objectReference: {fileID: 8300000, guid: 3712bc2024a3fb7448283b0b840e95f8, type: 3}
+      objectReference: {fileID: 8300000, guid: ababc23522e3e7d4ea3214abf55db18d, type: 3}
     - target: {fileID: 3520132322926795695, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: EMPattackedText
       value: 

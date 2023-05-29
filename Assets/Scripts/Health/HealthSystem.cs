@@ -48,7 +48,7 @@ public class HealthSystem : MonoBehaviour
 
 
     spawner spawnerobj;
-
+    public float empAttackSoundWait;
 
     private void Start()
     {
@@ -128,6 +128,10 @@ public class HealthSystem : MonoBehaviour
     {
         if (isEMP)
         {
+            if (empAttackSoundWait > 0)
+            {
+                empAttackSoundWait -= Time.deltaTime;
+            }
             float currentHealth = Health;
             float maxHealth = MaxHealth;
             empHealthBar.fillAmount = currentHealth / maxHealth;
@@ -135,8 +139,9 @@ public class HealthSystem : MonoBehaviour
             if (looseHealth != Health)
             {
                 EMPattackedText.SetActive(true);
-                if (!audioSource.isPlaying && !dead)
+                if (!audioSource.isPlaying && !dead && empAttackSoundWait <= 0)
                 {
+                    empAttackSoundWait = 5;
                     audioSource.PlayOneShot(anderAttack);
                 }
                 looseHealth = Health;
