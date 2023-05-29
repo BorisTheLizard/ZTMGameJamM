@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
 
 public class enemyAI : MonoBehaviour
 {
@@ -51,7 +50,6 @@ public class enemyAI : MonoBehaviour
     public float MaxplayIDLEsound;
     float playIdleSound;
 
-
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -83,7 +81,7 @@ public class enemyAI : MonoBehaviour
             this.gameObject.SetActive(false);
             health.Health = health.MaxHealth;
             health.dead = false;
-            
+
 
             if (!isMele)
             {
@@ -100,6 +98,7 @@ public class enemyAI : MonoBehaviour
                     obj.SetActive(true);
                 }
             }
+
             GameObject deathEffect = pool.GetObject(deathEffectIndex);
             if (deathEffect != null)
             {
@@ -111,8 +110,8 @@ public class enemyAI : MonoBehaviour
 
         if (currentState == "IDLE")
         {
-			if (Time.time>playIdleSound)
-			{
+            if (Time.time > playIdleSound)
+            {
                 playIdleSoundFunk();
             }
             rotationTowardsDirection();
@@ -242,15 +241,15 @@ public class enemyAI : MonoBehaviour
     }
 
     void playIdleSoundFunk()
-	{
+    {
         MaxplayIDLEsound = Random.Range(5f, 15f);
         playIdleSound = Time.time + MaxplayIDLEsound;
 
         if (!audioSource.isPlaying)
         {
             audioSource.clip = idleSounds[Random.Range(0, idleSounds.Length)];
-			if (this.gameObject.activeSelf == true)
-			{
+            if (this.gameObject.activeSelf == true)
+            {
                 audioSource.Play();
             }
         }

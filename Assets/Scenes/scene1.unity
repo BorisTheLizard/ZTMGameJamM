@@ -14461,12 +14461,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoin: []
-  duration: 6
+  duration: 180
   timerText: {fileID: 1137989022}
   currentWave: 1st
-  timeToSpawn: 2
+  timeToSpawn: 1.9
   timeToSpawn1: 1.5
-  timeToSpawn2: 0.7
+  timeToSpawn2: 1
   spawnerAtDuty: 0
   chargedEMP: 0
   EMPchargedButtonTrigger: {fileID: 557387374}
@@ -22720,7 +22720,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7779887, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -25466,7 +25466,7 @@ PrefabInstance:
     - target: {fileID: 557387379, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: WaveSound
       value: 
-      objectReference: {fileID: 8300000, guid: bb3d2620c4c5a8f499e28111bb958f4a, type: 3}
+      objectReference: {fileID: 8300000, guid: 46cef5ca00b28ce4098dc53a61b60ddf, type: 3}
     - target: {fileID: 557387379, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: combatMusic
       value: 
@@ -25483,6 +25483,10 @@ PrefabInstance:
       propertyPath: endLvlDarkScreen
       value: 
       objectReference: {fileID: 1020802648}
+    - target: {fileID: 1196523787, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3520132322926795692, guid: a52a9c34bd7e7a340aad028c83769e92, type: 3}
       propertyPath: m_Name
       value: EMP

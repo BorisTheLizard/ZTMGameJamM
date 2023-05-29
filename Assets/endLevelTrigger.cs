@@ -21,6 +21,7 @@ public class endLevelTrigger : MonoBehaviour
     [SerializeField] GameObject combatMusicObj;
 
 
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -35,7 +36,7 @@ public class endLevelTrigger : MonoBehaviour
             /*			if (Input.GetKeyDown(KeyCode.Mouse1))
 						{*/
             StartCoroutine(LoadNextLevel());
-            //audioSource.PlayOneShot(WaveSound);
+            audioSource.PlayOneShot(WaveSound);
             shockWaveFloor.SetActive(true);
             Spawner.enabled = false;
             chargedParts.SetActive(false);

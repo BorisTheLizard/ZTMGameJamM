@@ -151,6 +151,7 @@ public class HealthSystem : MonoBehaviour
             {
                 if (!Defeated)
                 {
+                    audioSource.PlayOneShot(explosionSound);
                     spawnerobj.eMPDestroyed = true;
                     Defeated = true;
                     anim.SetTrigger("dead");
@@ -159,11 +160,10 @@ public class HealthSystem : MonoBehaviour
                     lineRender.SetActive(false);
                     flame.Play();
                     PressImpulseTrig.SetActive(false);
-                    audioSource.Stop();
+                    //audioSource.Stop();
                     music.enabled = false;
                     musicObject.SetActive(false);
                     sourse.GenerateImpulse();
-                    audioSource.PlayOneShot(explosionSound);
                 }
             }
 

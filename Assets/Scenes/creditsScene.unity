@@ -1307,10 +1307,10 @@ AudioSource:
   m_GameObject: {fileID: 684505512}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8163263720183812299, guid: 3d27a03542e2cc14c9d7bc7422e2f0bd, type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 348558b1d93e3c04a8ab534c22c84b63, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.534
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4477,7 +4477,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7779887, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
